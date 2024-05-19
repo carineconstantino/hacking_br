@@ -6,7 +6,7 @@
 ### 🇧🇷
 SubScanDNS é uma ferramenta em Python3, que faz uma enumeração de subdomínios usando a resolução DNS, a partir de uma wordlist.
 Para cada subdomínio encontrado, a ferramenta retorna os endereços IPs associados no processo de Lookup. 
-O resultao é salvo no formato HTML e também na CLI padrão. 
+O resultado é salvo no formato HTML e também na CLI padrão. 
 
 ### 🇺🇸
 SubScanDNS tool make a subdomain enumeration from a custom wordlist by DNS resolution, discovering IP address each subdomain found.
