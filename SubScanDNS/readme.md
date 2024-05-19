@@ -10,7 +10,7 @@ Para cada subdomínio encontrado, a ferramenta retorna os endereços IPs associa
 O resultado é salvo no formato HTML e também na CLI padrão. 
 
 ### 🇺🇸
-SubScanDNS tool make a subdomain enumeration from a custom wordlist by DNS resolution, discovering IP address each subdomain found.
+SubScanDNS tool make a subdomain enumeration from a custom wordlist by DNS resolution, discovering IP address from each subdomain found.
 Results are save in HTML format and CLI output. 
 
 ## ⏩ Exemplo
