@@ -1,5 +1,5 @@
 <p align="left">
-    <img width="500" src="subscandns.png"><p></p>
+    <img width="500" src="SubScanDNS.png"><p></p>
     <a href="https://github.com/carineconstantino/hackingbr">@hackingbr></a>
 </p>
 
