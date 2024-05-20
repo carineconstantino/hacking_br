@@ -26,7 +26,7 @@ python3 SubScanDNS.py -domain exemplo.com
 ### 🎯 Resultado no formato HTML
 
 <p align="left">
-    <img width="500" src="subscandns-html.png"><p></p>
+    <img width="500" src="SubScanDNS-html.png"><p></p>
 </p>
 
 #
