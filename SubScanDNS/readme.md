@@ -20,13 +20,13 @@ python3 SubScanDNS.py -domain exemplo.com
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img width="900" src="SubScanDNS-exemplo.png"><p></p>
+    <img width="1024" src="SubScanDNS-exemplo.png"><p></p>
 </p>
 
 ### 🎯 Resultado no formato HTML
 
 <p align="left">
-    <img width="900" src="SubScanDNS-html.png"><p></p>
+    <img width="1024" src="SubScanDNS-html.png"><p></p>
 </p>
 
 #
