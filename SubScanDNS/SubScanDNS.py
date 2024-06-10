@@ -23,6 +23,7 @@ if __name__ == '__main__':
         resolver = dns.resolver.Resolver()
         file_path = "subdomains.txt"
         results = []
+        private_ip_count = 0  # contador para resultado com IP privado
 
         try:
             with open(file_path, 'r') as open_file:
@@ -40,7 +41,15 @@ if __name__ == '__main__':
                                       # executa o comando
                                       check = subprocess.run(command, capture_output=True, text=True, check=True)
                                       # adiciona o resultado para o output
-                                      results.append([full_domain, str(rdata), check.stdout.strip()]) 
+                                      results.append([full_domain, str(rdata), check.stdout.strip()])
+                                      ip_address = rdata.address  # verifica se o IP é privado no output do comando hosts
+                                      if ip_address.startswith(('10.', '172.', '192.168.')):
+                                      	private_ip_count += 1
+                                      else:
+                                      	private_ip_count = 0  # interrompe a execução se o IP privado retorna 10x consecutivas
+                                      if private_ip_count >= 10:
+                                          print("[+] Stop :: Resolução DNS retorna IP privado.")
+                                          return results
                            except dns.resolver.NXDOMAIN:
                                pass
                            except dns.resolver.NoAnswer:
@@ -111,4 +120,3 @@ if __name__ == '__main__':
             print("\nResultado salvo no arquivo HTML"+str_current_datetime+"-SubScanDNS-Results.html")
 
     enumRun()
-
