@@ -2,7 +2,7 @@ import subprocess
 import pyfiglet
 
 # Banner
-titulo = pyfiglet.figlet_format("Host-To-IP")
+titulo = pyfiglet.figlet_format("Host2IP")
 print(titulo)
 print('Criado por @hackingbr\n')
 print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_')
