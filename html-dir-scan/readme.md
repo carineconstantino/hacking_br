@@ -11,7 +11,7 @@ O objetivo é validar quais "paths" são acessíveis, e assim descobrir endpoint
 python3 html-dir-scan.py -url https://exemplo.com
 ```
 ### Resultado na CLI
-Diretórios validados - status 200, 301 ou 302
+Diretórios validados
 <p align="left">
     <img width="500" src="html-dir-scan-exemplo.png"><p></p>
 </p>
