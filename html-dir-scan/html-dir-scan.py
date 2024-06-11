@@ -6,11 +6,13 @@ import re
 import datetime
 from bs4 import BeautifulSoup
 
+# banner
 titulo = pyfiglet.figlet_format("HTML DIR SCAN")
 print(titulo)
 print('Criado por @hackingbr\n')
 print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_')
 
+# argumentos
 if __name__ == '__main__':
     program_name = argparse.ArgumentParser(description='HTML DIR SCAN')
     program_name.add_argument('-url', action='store', dest='url',
@@ -20,32 +22,32 @@ if __name__ == '__main__':
 
 
 async def search_dir_in_html(session):
-### access url and search for all paths in html code
+### acessa a url e faz o 'parser' da resposta 
     async with session.get(base_url) as response:
         html = await response.text()
         soup = BeautifulSoup(html, 'html.parser')
-        ### regex to search for paths in html code
+        ### regex para buscar por diretório, ex: /path/
         search_dir = set(re.findall(r'/[a-zA-Z]+/', html))
         d = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print('[+] Data do Scan: ', d)
         print('[+] Directories Found in HTML:\n', search_dir)
         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_')
         print('[+] Testing Directories Access & Brute-Force\n')
-        ### index for each path found
+        ### index para cada diretório encontrado
         tasks = []
-        ## add each path in a index and create a url for each path 
+        ## adiciona cada diretórios no index e cria a url para cada um
         for x in search_dir:
             tasks.append(test_directory_access(session, base_url + x))
         await asyncio.gather(*tasks)
 
 
 async def test_directory_access(session, url):
-### make a request for each url with path found = http status 200, 301, 302
+### faz a requisição para cada diretório encontrado, filtro para os status 200, 301, 302, 404, 401, 500
     try:
         data_log = datetime.datetime.now().strftime("%Y-%m-%d-%H:%M")
         data_title = str(data_log)
         async with session.get(url) as response:
-            if response.status in [200, 301, 302]:
+            if response.status in [200, 301, 302, 404, 401, 500]:
                 print('-->Send: ', url)
                 print('-->Status: ', response.status)
                 with open(data_title + "-wordlist.txt", "a") as output_file:
@@ -56,7 +58,8 @@ async def test_directory_access(session, url):
 
 
 async def main():
-    ### close session created by aiohttp after timout of 60 seconds
+    ### fecha a sessão criado pelo aiohttp depois de um timeout de 60 seconds
+    ### isso evita que o scrit demore pois espera uma resposta da requisição
     async with aiohttp.ClientSession() as session:
         try:
             await asyncio.wait_for(search_dir_in_html(session), timeout=60)
