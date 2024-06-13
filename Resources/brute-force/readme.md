@@ -15,3 +15,20 @@ Search in Seclists
 
 ```ffuf -request req.txt -request-proto https -mode clusterbomb -w /usr/share/seclists/users.txt:FUZZUSER -w /usr/share/seclists/pass.txt:FUZZPASS -mc 302```
 
+### HYDRA
+#### SSH
+```
+hydra -v -l [username] -P senhas.txt [IP] ssh -s [PORT]
+```
+### MEDUSA
+#### POSTGRES
+Instalação do client no Ubuntu ```apt install postgresql-client-common```
+```
+medusa -H ips.txt -u [nome-do-usuario] -p [senha] -M [modulo] -n [porta]
+
+### ver os módulos
+
+medusa -d 
+```
+
+
