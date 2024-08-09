@@ -1,7 +1,7 @@
 ## SQLi
 
 ## Blind SQLi
-Script de exemplo para exploração do Blind SQLi com respostas condicionais. 
+Script de exemplo para exploração do Blind SQLi com respostas condicionais.<p>
 LAB: https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses
 ```
 import requests
