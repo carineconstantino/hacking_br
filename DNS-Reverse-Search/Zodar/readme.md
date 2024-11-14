@@ -18,7 +18,7 @@ python3 zodar.py -ip [IP]
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img width="1024" src="SubScanDNS-exemplo.png"><p></p>
+    <img width="1024" src="resultado.png"><p></p>
 </p>
 
 #
