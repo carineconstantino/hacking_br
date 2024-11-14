@@ -48,27 +48,27 @@ aws iam list-roles --profile [profile-name]
 ```
 aws iam list-attached-role-policies --role-name [ role-name]
 ```
-## ver todas as “inline policies” adicionadas a IAM role 
+### ver todas as “inline policies” adicionadas a IAM role 
 ```
 aws iam list-role-policies --role-name [ role-name]
 ```
-## ver todas as policies 
+### ver todas as policies 
 ```
 aws iam list-policies --profiles [profile-name]
 ```
-## retona informação sobre uma “managed policy” específica
+### retona informação sobre uma “managed policy” específica
 ```
 aws iam get-policy --policy-arn [policy-arn]
 ```
-## retorna as versões de uma “managed policy” específica
+### retorna as versões de uma “managed policy” específica
 ```
 aws iam list-policy-versions --policy-arn [policy-arn]
 ```
-## ver as permissões em uma versão específica de uma policy
+### ver as permissões em uma versão específica de uma policy
 ```
 aws iam get-policy-version --policy-arn policy-arn --version-id [version-id]
 ```
-## retorna as permissões (document) em uma “inline policy”
+### retorna as permissões (document) em uma “inline policy”
 
 user
 ```
