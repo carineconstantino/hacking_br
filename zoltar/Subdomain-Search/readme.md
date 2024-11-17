@@ -15,7 +15,7 @@ Different from other tools, Zoltar uses "build-in" tool to discover subdomains, 
 
 ## ⏩ Exemplo
 ```
-python3 zodar.py -domain [domain]
+python3 zoltar.py -domain [domain]
 ```
 ### 🎯 Resultado na CLI
 
