@@ -20,7 +20,7 @@ python3 zoltar.py -domain [domain]
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img src=".png"><p></p>
+    <img src="zoltar-subdomain-result.png"><p></p>
 </p>
 
 #
