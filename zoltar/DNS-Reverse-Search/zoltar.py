@@ -24,14 +24,6 @@ banner = """
 
 """                                               
 
-#titulo = pyfiglet.figlet_format("Zoltar")
-#subtitle = "Reverse DNS Search"
-#print(Fore.RED + '-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_')
-#print(Fore.RED + '-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_')
-#print(Fore.RED + texto_centralizado + "[ " + subtitle + " ]" + '\n')
-#print('Criado por @hackingbr | www.hackingbr.com.br')
-#print(Fore.RED + '-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_')
-#print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_')
 print(Fore.RED + banner)
 
 
