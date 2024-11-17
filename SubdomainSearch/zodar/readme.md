@@ -1,5 +1,5 @@
 <p align="left">
-    <img width="500" src="zodar-sub"><p></p>
+    <img width="500" src="zodar-sub.png"><p></p>
     <a href="https://github.com/carineconstantino/hackingbr">@hackingbr></a>
 </p>
 
