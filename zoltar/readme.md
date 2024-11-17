@@ -8,6 +8,6 @@
 Coleção de scripts
 
 ### 🇺🇸
-Sripts colletion
+Scripts colletion
 
 #
