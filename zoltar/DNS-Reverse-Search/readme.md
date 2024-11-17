@@ -18,7 +18,7 @@ python3 zoltar.py -ip [IP]
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img src=".png"><p></p>
+    <img src="zoltar-resultado-dns-reverso.png"><p></p>
 </p>
 
 #
