@@ -16,5 +16,5 @@ python3 connTOR.py
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img width="1024" src=".png"><p></p>
+    <img width="1024" src="resultado-na-cli.png"><p></p>
 </p>
