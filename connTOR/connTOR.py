@@ -22,6 +22,9 @@ def reiniciar_tor():
     clear_connection = os.system("fuser -k 9051/tcp >>/tmp/logtor.txt")
     print(Fore.BLUE + f" [+] Iniciando TOR...")
     init_tor = os.system("systemctl start tor")
+    init_ip = requests.get('https://httpbin.org/ip')
+    ip_origin = init_ip.json()['origin']
+    print(Fore.GREEN + f" [+] IP sem Tor :::", ip_origin)
     # captura o status do TOR
     status_tor = "systemctl status tor"
     process = subprocess.Popen(status_tor, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
