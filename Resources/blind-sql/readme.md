@@ -33,7 +33,7 @@ IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(
 ### Burp Suite to exploit Blind SQLi
 <p>Instale a extensão "Copy as Python-Requests" do Burp Suite e use a requisição para realizar a exploração do Blind SQL Injection. 
 Script de exemplo para exploração do Blind SQLi com respostas condicionais.</p>
-[Burp Lab](https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses)
+Burp Lab: https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses
 <br></br>
 
 ```
