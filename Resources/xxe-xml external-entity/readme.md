@@ -392,9 +392,9 @@ xxe.xml
 # Arquivo DTD
 <!ENTITY all "%start;%stuff;%end;">
 ```
-<p>Payloads: 
-  - https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection
-  - https://www.synacktiv.com/ressources/advisories/TIBCO_JasperReports_Server_XXE.pdf</p>
-<p>Blind XXE exemplos: https://portswigger.net/web-security/xxe/blind</p>
-<p>XXE Learning: https://gosecure.github.io/xxe-workshop/#0</p>
+<p>:orange_book: Payloads: 
+  - <p>https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection</p>
+  - <p>https://www.synacktiv.com/ressources/advisories/TIBCO_JasperReports_Server_XXE.pdf</p>
+<p>:orange_book: Blind XXE exemplos: https://portswigger.net/web-security/xxe/blind</p>
+<p>:orange_book: XXE Learning: https://gosecure.github.io/xxe-workshop/#0</p>
 
