@@ -1,3 +1,5 @@
+# Blind SQLi
+
 :hamburger:Basicamente uma aplicação é vulnerável a Blind SQL Injection quando não retorna nenhum resultado como resposta aos códigos SQL injetados. Neste cenário, códigos contendo UNION não são efetivos, e é necessário usar códigos condicionais para extrair informações da base de dados. 
 
 :fries:Checklist
