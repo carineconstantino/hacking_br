@@ -11,9 +11,7 @@ python3 http-header-scan.py -url https://exemplo.com
 ```
 ### Resultado
 <p align="left">
-    <img width="500" src="html-dir-scan-exemplo.png"><p></p>
-</p>
-
+    <img width="500" src="http-header-scan.png"><p></p>
 </p>
 
 #
