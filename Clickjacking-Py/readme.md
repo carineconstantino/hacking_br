@@ -7,7 +7,7 @@
 Clickjacking-Py é uma ferramenta em Python3 para "Prova de conceito" da vulnerabilidade de Clickjacking. 
 
 ### 🇺🇸
-Clickjacking tool make a Clickjacking "Prove of concept" to determined if a web application is vulnerable. 
+Clickjacking tool make a "Prove of concept" to determined if a web application is vulnerable. 
 
 ## ⏩ Exemplo
 ```
