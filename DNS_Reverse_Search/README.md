@@ -3,7 +3,7 @@
     <a href="https://github.com/carineconstantino/hackingbr">@hackingbr></a>
 </p>
 
-## 👾 Zoltar
+## 👾 Zoltar [DNS Reverse Search]
 ### 🇧🇷
 Zoltar é uma ferramenta em Python3, que faz uma enumeração de domínios associados a um IP usando a consulta DNS reversa.
 
@@ -13,7 +13,7 @@ Zoltar tool make a domain enumeration from a IP address by searching a reverse D
 
 ## ⏩ Exemplo
 ```
-python3 zoltar.py -ip [IP]
+python3 zoltar-dns-reverse-search.py -ip [IP]
 ```
 ### 🎯 Resultado na CLI
 
