@@ -9,7 +9,7 @@ Zoltar é uma ferramenta em Python3 que analisa os códigos HTML e Javascript de
 
 ## ⏩ Exemplo
 ```
-python3 zoltar.py -ip [IP]
+python3 zoltar-html-scan.py -ip [IP]
 ```
 ### 🎯 Resultado na CLI
 
