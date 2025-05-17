@@ -5,7 +5,6 @@ import streamlit as st
 import time
 from streamlit_autorefresh import st_autorefresh
 from datetime import date
-import plotly.graph_objects as go
 from datetime import datetime
 
 # config menu
