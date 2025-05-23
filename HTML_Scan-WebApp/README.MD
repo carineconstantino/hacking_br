@@ -14,10 +14,10 @@
 + domínios, 
 + endereço IP. 
 
-Além da versão web, está disponível [AQUI](https://github.com/carineconstantino/hacking_br/blob/main/HTML_Scan/README.md), o script HTML_Scan.
+Além da versão web, está disponível o script [HTML Scan](https://github.com/carineconstantino/hacking_br/blob/main/HTML_Scan/README.md).
 
 <p align="left">
-    <img src="cve_today.png"><p></p>
+    <img src="html_scan.png"><p></p>
 </p>
 
 
