@@ -14,7 +14,7 @@
 + domínios, 
 + endereço IP. 
 
-<p> Além da versão web, está disponível [AQUI](/HTML_Scan/README.md), o script HTML_Scan. </p> 
+<p> Além da versão web, está disponível [AQUI](https://github.com/carineconstantino/hacking_br/tree/main/HTML_Scan), o script HTML_Scan. </p> 
 
 <p align="left">
     <img src="cve_today.png"><p></p>
