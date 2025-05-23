@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup
+import BeautifulSoup as bs4
 import re
 import socket
 from urllib.parse import urlparse, urljoin
