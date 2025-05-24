@@ -9,8 +9,15 @@ nmap -sn [rede]
 for i in $(seq 1 254); do ping -c 2 10.10.150.$i; done
 
 ## Salva o resultado em 3 formatos oN .nmap, oG .gnmap, oX .xml
+## Usa o parametro -oA tnet para essa função
 
 nmap [192.168.0.1-20] -sn -oA tnet | grep for | cut -d" " -f5
+
+## Salva o resultado em formatos específicos
+
+-oA tnet.nmap (padrão)
+-oA tnet.gnamp
+-oA tnet.xml
 
 ## Scan Múltiplos IPs
 
