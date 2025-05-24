@@ -2,10 +2,11 @@
 ### Principais comandos
 ```
 NOT-PORT Scan (-sn): executa apenas ping
+nmap -sn [rede] 
 
 ## Ping Scan (Ping Sweep)
 
-nmap -sn [rede] 
+for i in $(seq 1 254); do ping -c 2 10.10.150.$i; done
 
 ## Salva o resultado em 3 formatos oN .nmap, oG .gnmap, oX .xml
 
