@@ -4,9 +4,11 @@
 
 ## 👾 NMAP [Ultimate Guide]
 
-### Simple Scan
+## Simple Scan
 <p> Primeiro scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
 O pacote SYN não completa a conexão com o host, a avaliação do estado da porta ocorre da seguinte forma:</p>
+
+Scan automático: [nmap.sh]()
 
 * resposta do host com SYN-ACK = posta aberta
 * resposta do host com RST = porta fechada
@@ -21,7 +23,7 @@ nmap -Pn -sS -sV -sC [IP] -oN [file]
 * -sC = default scripts
 * -oN = save nmap results
 
-### Vulnerability Scan
+## Vulnerability Scan
 <p>Scan de vulnerabilidades usando os scripts da categoria vuln</p>
 
 ```
@@ -38,15 +40,18 @@ nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
 ### Firewall/Filtro Scan
 <p>Scan para validar firewall/filtros na rede</p>
 
-#### ACK Scan = faz o mapeamento de regras do firewall ao enviar pacotes com a flag ACK habilitada, se uma porta filtrada pelo firewall responder com RST, indica que a conexão foi possível usando o pacote ACK. 
+### ACK Scan 
+<p>Faz o mapeamento de regras do firewall ao enviar pacotes com a flag ACK habilitada, se uma porta filtrada pelo firewall responder com RST, indica que a conexão foi possível usando o pacote ACK.</p> 
 ```
 nmap -sA --reason --traceroute [IP] -oN [file]
 ```
-#### Window Scan = ao responder com RST, caso o pacote o campo window não seja nulo, isso indica que o serviço existe e está filtrado pelo firewall. Quando o valor no campo window é zero, então a porta está fechada. 
+### Window Scan
+<p>Ao responder com RST, caso o pacote o campo window não seja nulo, isso indica que o serviço existe e está filtrado pelo firewall. Quando o valor no campo window é zero, então a porta está fechada.</p> 
 ```
 nmap -sW --reason --traceroute [IP] -oN [file]
 ```
-#### Maimon Scan = sistemas baseados em BSD não enviam o pacote RST quando a porta está aberta
+### Maimon Scan
+<p>Sistemas baseados em BSD não enviam o pacote RST quando a porta está aberta</p>
 ```
 nmap -sM --reason --traceroute [IP] -oN [file]
 ```
