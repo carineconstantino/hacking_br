@@ -2,9 +2,14 @@
     <a href="https://github.com/carineconstantino/hackingbr">@hackingbr></a>
 </p>
 
-## 👾 Zoltar [DNS Reverse Search]
+## 👾 NMAP [Ultimate Guide]
 ### 🇧🇷
-Zoltar é uma ferramenta em Python3, que faz uma enumeração de domínios associados a um IP usando a consulta DNS reversa.
+Simple Scan
+```
+nmap -Pn -sS -sV -sC [IP] -oN [file].txt
+```
+- -Pn = disable ping
+- -sS = syn scan
 
 ### 🇺🇸
 Zoltar tool make a domain enumeration from a IP address by searching a reverse DNS registers.
