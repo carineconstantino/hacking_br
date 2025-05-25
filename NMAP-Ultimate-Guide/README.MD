@@ -3,16 +3,22 @@
 </p>
 
 ## 👾 NMAP [Ultimate Guide]
-### 🇧🇷
-Simple Scan
+
+### Simple Scan
+<p> Faça o primeiro scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.</p>
 ```
 nmap -Pn -sS -sV -sC [IP] -oN [file].txt
 ```
 - -Pn = disable ping
 - -sS = syn scan
+- -sV = version scan
+- -sC = default scripts
+- oN = save nmap results
 
-### 🇺🇸
-Zoltar tool make a domain enumeration from a IP address by searching a reverse DNS registers.
+### Vulnerability Scan
+<p> 
+- -Pn = disable ping
+- -T4 = timing 4 aggressive
 
 
 ## ⏩ Exemplo
