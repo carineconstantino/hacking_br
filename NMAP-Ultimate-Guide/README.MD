@@ -48,7 +48,7 @@ nmap -sA --reason --traceroute [IP] -oN [file]
 ```
 
 ### Window Scan
-<p>Ao responder com RST, caso o pacote o campo window não seja nulo, isso indica que o serviço existe e está filtrado pelo firewall. Quando o valor no campo window é zero, então a porta está fechada.</p> 
+<p>Ao responder com RST, caso o campo window não seja nulo, isso indica que o serviço existe e está filtrado pelo firewall. Quando o valor no campo window é zero, então a porta está fechada.</p> 
 
 ```
 nmap -sW --reason --traceroute [IP] -oN [file]
