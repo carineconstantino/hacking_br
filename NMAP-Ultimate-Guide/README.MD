@@ -5,7 +5,7 @@
 ## 👾 NMAP [Ultimate Guide]
 
 ### Simple Scan
-<p> Faça o primeiro scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
+<p> Primeiro scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
 O pacote SYN não completa a conexão com o host, a avaliação do estado da porta ocorre da seguinte forma:</p>
 
 * resposta do host com SYN-ACK = posta aberta
@@ -13,7 +13,7 @@ O pacote SYN não completa a conexão com o host, a avaliação do estado da por
 * sem resposta ou ICMP unreachable = porta bloqueada/filtrada pelo firewall
 
 ```
-nmap -Pn -sS -sV -sC [IP] -oN [file].txt
+nmap -Pn -sS -sV -sC [IP] -oN [file]
 ```
 * -Pn = disable ping
 * -sS = syn scan
@@ -22,15 +22,36 @@ nmap -Pn -sS -sV -sC [IP] -oN [file].txt
 * -oN = save nmap results
 
 ### Vulnerability Scan
-<p> 
-- -Pn = disable ping
-- -T4 = timing 4 aggressive
+<p>Scan de vulnerabilidades usando os scripts da categoria vuln</p>
+
+```
+nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
+```
+
+* -Pn = disable ping
+* -T4 = timing 4 aggressive
+* -sS = syn scan
+* -p = port
+* --script vuln
+* -oN = save nmap results
+
+### Firewall/Filtro Scan
+<p>Scan para validar firewall/filtros na rede</p>
+
+#### ACK Scan = faz o mapeamento de regras do firewall ao enviar pacotes com a flag ACK habilitada, se uma porta filtrada pelo firewall responder com RST, indica que a conexão foi possível usando o pacote ACK. 
+```
+nmap -sA --reason --traceroute [IP] -oN [file]
+```
+#### Window Scan = ao responder com RST, caso o pacote o campo window não seja nulo, isso indica que o serviço existe e está filtrado pelo firewall. Quando o valor no campo window é zero, então a porta está fechada. 
+```
+nmap -sW --reason --traceroute [IP] -oN [file]
+```
+#### Maimon Scan = sistemas baseados em BSD não enviam o pacote RST quando a porta está aberta
+```
+nmap -sM --reason --traceroute [IP] -oN [file]
+```
 
 
-## ⏩ Exemplo
-```
-python3 zoltar-dns-reverse-search.py -ip [IP]
-```
 ### 🎯 Resultado na CLI
 
 <p align="left">
