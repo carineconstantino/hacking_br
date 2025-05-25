@@ -1,5 +1,4 @@
 <p align="left">
-    <img width="500" src="zoltar-dns.png"><p></p>
     <a href="https://github.com/carineconstantino/hackingbr">@hackingbr></a>
 </p>
 
@@ -18,7 +17,7 @@ python3 zoltar-dns-reverse-search.py -ip [IP]
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img src="zoltar-resultado-dns-reverso.png"><p></p>
+    <img src="nmap-mind-map.png"><p></p>
 </p>
 
 #
