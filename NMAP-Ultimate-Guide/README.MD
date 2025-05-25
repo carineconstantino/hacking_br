@@ -68,6 +68,18 @@ nmap -sM --reason --traceroute [IP] -oN [file]
 nmap -f --mtu -T[0-5] --scan-delay --max-rate -D [IP1, IP2] -S [PORT1, PORT2] --spoof-mac -sI -sT --source-port --data
 ```
 
+* -f = os pacotes são divididos em tamanho menores
+* --mtu = tamanho do pacote fragmentado (pacote normal possui 1500bytes)
+* -T[0-5] = timing
+* --scan-delay = tempo entre o envio dos pacotes
+* --max-rate = quantidade de pacotes por segundo
+* -D = gera pacotes como se fossem originados de vários IPs
+* -S = configura ip falso como a origem do scan
+* --spoof-mac = configura um MAC address falso
+* -sI =  usa um terceiro host (o zumbi ou "idle host") para fazer o scan indiretamente
+* -sT = pacote TCP connect
+* --source-port = configura uma porta de origem 
+* --data = configura um payload no pacote
 
 <p align="left">
     <img src="nmap-mind-map.png"><p></p>
