@@ -5,7 +5,7 @@
 ## NMAP [Ultimate Guide]
 
 ## Simple Scan
-<p> Primeiro scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
+<p>Scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
 O pacote SYN não completa a conexão com o host, a avaliação do estado da porta ocorre da seguinte forma:</p>
 
 * resposta do host com SYN-ACK = posta aberta
