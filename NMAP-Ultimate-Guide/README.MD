@@ -2,7 +2,7 @@
     <a href="https://github.com/carineconstantino/hackingbr">@hackingbr></a>
 </p>
 
-## 👾 NMAP [Ultimate Guide]
+## NMAP [Ultimate Guide]
 
 ## Simple Scan
 <p> Primeiro scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
@@ -37,27 +37,32 @@ nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
 * --script vuln
 * -oN = save nmap results
 
-### Firewall/Filtro Scan
+## Firewall/Filtro Scan
 <p>Scan para validar firewall/filtros na rede</p>
 
 ### ACK Scan 
 <p>Faz o mapeamento de regras do firewall ao enviar pacotes com a flag ACK habilitada, se uma porta filtrada pelo firewall responder com RST, indica que a conexão foi possível usando o pacote ACK.</p> 
+
 ```
 nmap -sA --reason --traceroute [IP] -oN [file]
 ```
+
 ### Window Scan
 <p>Ao responder com RST, caso o pacote o campo window não seja nulo, isso indica que o serviço existe e está filtrado pelo firewall. Quando o valor no campo window é zero, então a porta está fechada.</p> 
 ```
 nmap -sW --reason --traceroute [IP] -oN [file]
 ```
+
 ### Maimon Scan
 <p>Sistemas baseados em BSD não enviam o pacote RST quando a porta está aberta</p>
 ```
 nmap -sM --reason --traceroute [IP] -oN [file]
 ```
 
-
-### 🎯 Resultado na CLI
+## Evasion Scan
+<p>Scan para fazer evasão de filrewall/IDS/IPS</p>
+```
+nmap -f --mtu -T[0-5] --scan-delay --max-rate -D [IP1, IP2] -S [PORT1, PORT2] --spoof-mac -sI
 
 <p align="left">
     <img src="nmap-mind-map.png"><p></p>
