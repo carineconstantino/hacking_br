@@ -61,6 +61,8 @@ nmap -sW --reason --traceroute [IP] -oN [file]
 nmap -sM --reason --traceroute [IP] -oN [file]
 ```
 
+Scan automático Firewall/Filtro [firewall-check.sh](https://github.com/carineconstantino/hacking_br/blob/main/NMAP-Ultimate-Guide/firewall-check.sh)
+
 ## Evasion Scan
 <p>Scan para fazer evasão de filrewall/IDS/IPS</p>
 
@@ -80,6 +82,8 @@ nmap -f --mtu -T[0-5] --scan-delay --max-rate -D [IP1, IP2] -S [PORT1, PORT2] --
 * -sT = pacote TCP connect
 * --source-port = configura uma porta de origem 
 * --data = configura um payload no pacote
+
+Scan automático Evasion [firewall-evasion.sh](https://github.com/carineconstantino/hacking_br/blob/main/NMAP-Ultimate-Guide/firewall-evasion.sh)
 
 <p align="left">
     <img src="nmap-mind-map.png"><p></p>
