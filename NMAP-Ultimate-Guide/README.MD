@@ -8,8 +8,6 @@
 <p> Primeiro scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
 O pacote SYN não completa a conexão com o host, a avaliação do estado da porta ocorre da seguinte forma:</p>
 
-Scan automático: [nmap.sh]()
-
 * resposta do host com SYN-ACK = posta aberta
 * resposta do host com RST = porta fechada
 * sem resposta ou ICMP unreachable = porta bloqueada/filtrada pelo firewall
@@ -36,6 +34,8 @@ nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
 * -p = port
 * --script vuln
 * -oN = save nmap results
+
+Scan automático Simples + Vulnerabilidade [nmap.sh](https://github.com/carineconstantino/hacking_br/blob/main/NMAP-Ultimate-Guide/nmap.sh)
 
 ## Firewall/Filtro Scan
 <p>Scan para validar firewall/filtros na rede</p>
