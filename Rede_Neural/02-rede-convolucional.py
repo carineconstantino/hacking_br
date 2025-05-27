@@ -20,6 +20,10 @@ classifier.add(Conv2D(32, (3, 3), input_shape = (64, 64, 3), activation = 'relu'
 ## mapa de caracteristicas mais importantes
 classifier.add(MaxPooling2D(pool_size = (2, 2))) 
 
+## camadas adicionais para melhorar a eficiencia da rede
+classifier.add(Conv2D(32, (3, 3), activation = 'relu'))
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
+
 ## camada de flattening 
 ## cria o vetor da imagem
 classifier.add(Flatten())
