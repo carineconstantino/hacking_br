@@ -156,3 +156,4 @@ nmap -p- [IP] -oA allportscan
 nmap -sV --script=http-enum <target> -p 80,443,8000,8080
 ```
 Ref.: https://nairuzabulhul.gitbooks.io/oscp-roadmap/content/level-3/network-cheatsheets/nmap.html
+Ref.: https://www.hackthebox.com/blog/nmap-commands#what_is_nmap_
