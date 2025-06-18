@@ -24,7 +24,7 @@ nmap -Pn -sS -sV -sC [IP] -oN [file]
 Ref.: [SYN Scan](https://nmap.org/book/synscan.html)
 
 ## Vulnerability Scan
-<p>Scan de vulnerabilidades usando os scripts da categoria vuln</p>
+<p>Scan de vulnerabilidade usando os scripts da categoria vuln</p>
 
 ```
 nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
@@ -40,7 +40,7 @@ nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
 Scan automático Simples + Vulnerabilidade [nmap.sh](https://github.com/carineconstantino/hacking_br/blob/main/NMAP-Ultimate-Guide/nmap.sh)
 
 ## Firewall/Filtro Scan
-<p>Scan para validar firewall/filtros na rede</p>
+<p>Scan para validar regras de firewall/filtros na rede</p>
 
 ### ACK Scan 
 <p>Faz o mapeamento de regras do firewall ao enviar pacotes com a flag ACK habilitada, se uma porta filtrada pelo firewall responder com RST, indica que a conexão foi possível usando o pacote ACK.</p> 
