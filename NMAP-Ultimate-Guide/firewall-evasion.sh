@@ -17,17 +17,11 @@ menu() {
     echo -e "${ORANGE}┌─**----------------------------------------------**─┐"
     echo "Escolha as técnicas de evasão (digite o número, 0 para finalizar):"
     echo "1 - Fragmentação (-f)"
-    echo "2 - Definir MTU (--mtu)"
-    echo "3 - Timing Template (-T0 a -T5)"
-    echo "4 - Scan Delay (--scan-delay)"
-    echo "5 - Max Rate (--max-rate)"
-    echo "6 - Decoys (-D)"
-    echo "7 - Spoof IP (-S)"
-    echo "8 - Spoof MAC (--spoof-mac)"
-    echo "9 - Idle Scan (-sI)"
-    echo "10 - TCP Connect Scan (-sT)"
-    echo "11 - Source Port (--source-port)"
-    echo "12 - Data Payload (--data)"
+    echo "2 - Source Port (-g)"
+    echo "3 - Data Length (--data-length)"
+    echo "4 - TTL Scan (--ttl)"
+    echo "5 - Decoy Scan (-D)"
+    echo "6 - Spoof IP (-S)"
     echo "0 - Finalizar seleção"
     echo -e "${ORANGE}└─**---------------------------------------------**─┘"
 }
@@ -41,48 +35,25 @@ while true; do
             parametros+=" -f"
             ;;
         2)
-            read -p "Valor de MTU (ex: 24, 8, 1400): " mtu
-            parametros+=" --mtu $mtu"
+            read -p "Source port (-g):" source
+            parametros+=" -g $source"
             ;;
         3)
-            read -p "Timing (0 = paranoid até 5 = insane): " timing
-            parametros+=" -T$timing"
+            read -p "Data Length (--data-length):" data
+            parametros+=" --data-length" $data
             ;;
         4)
-            read -p "Delay entre pacotes (ex: 1s, 500ms): " delay
-            parametros+=" --scan-delay $delay"
+            read -p "TTL Scan (--ttl):" ttl
+            parametros+=" --ttl $ttl"
             ;;
         5)
-            read -p "Limite de pacotes por segundo (ex: 10): " rate
-            parametros+=" --max-rate $rate"
+            read -p "Decoy Scan (-D):" decoy
+            parametros+=" -D $decoy"
             ;;
         6)
-            read -p "Lista de IPs decoy (ex: 1.1.1.1,2.2.2.2,ME): " decoys
-            parametros+=" -D $decoys"
-            ;;
-        7)
-            read -p "IP para spoof (-S): " spoof_ip
-            parametros+=" -S $spoof_ip"
-            ;;
-        8)
-            read -p "MAC falso (ex: 00:11:22:33:44:55 ou Apple/0): " mac
-            parametros+=" --spoof-mac $mac"
-            ;;
-        9)
-            read -p "Zombie host (ex: 192.168.0.100): " zombie
-            parametros+=" -sI $zombie"
-            ;;
-        10)
-            parametros+=" -sT"
-            ;;
-        11)
-            read -p "Source port: " source
-            parametros+=" --source-port $source"
-            ;;
-        12)
-            read -p "Data Payload: " data
-            parametros+=" --data $data"
-            ;;        
+            read -p "Spoof IP address (-S):" spoofip
+            parametros+=" -S $spoofip"
+            ;;    
         0)
             break
             ;;
