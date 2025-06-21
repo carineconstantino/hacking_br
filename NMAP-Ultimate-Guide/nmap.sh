@@ -13,11 +13,11 @@ BASE="$2"
 
 # primeiro scan
 echo -e "${ORANGE}┌─**-------------------------------------------------------------------------------**─┐"
-echo -e "${ORANGE}  * Scan inicial == SYN Packet, Version Detect, Common Scripts: $IP"
+echo -e "${ORANGE}  * Scan inicial == SYN Scan, Version Detect, Common Scripts: $IP"
 echo -e "${ORANGE}└─**-------------------------------------------------------------------------------**─┘"
 nmap -Pn -sS -sV -sC -oN "${BASE}.txt" "$IP"
 
-# scan portas identificadas
+# seleciona as portas identificadas
 echo -e "${ORANGE}┌─**--------------------------**─┐"
 echo -e "${ORANGE}  * Scan de vulnerabilidade"
 echo -e "${ORANGE}└─**--------------------------**─┘"
@@ -29,7 +29,8 @@ for PORTA in $PORTAS; do
     echo -e "${ORANGE}  * Scan de vulnerabilidades na porta $PORTA"
     echo -e "${ORANGE}└─**-----------------------------------------------**─┘"
     echo ""
-    nmap -Pn -T4 -sS -sV -sC -p "$PORTA" --script vuln -oN "${PORTA}.txt" "$IP"
+    nmap -Pn -T4 -sS -sV -p "$PORTA" --script vuln -oN "${PORTA}.txt" "$IP"
 done
 
 echo "[*] Scan finalizado"
+
