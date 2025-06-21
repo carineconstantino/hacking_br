@@ -4,9 +4,8 @@
 
 ## NMAP [Ultimate Guide]
 
-## Simple Scan
-<p>Scan com pacotes SYN, detecção da versão dos serviços e os scripts padrão.
-O pacote SYN não completa a conexão com o host, a avaliação do estado da porta ocorre da seguinte forma:</p>
+## TCP SYN (Stealth) Scan (-sS)
+<p>O SYN scan funciona iniciando a conexão com um pacote SYN, como no início do handshake TCP. Se a porta estiver aberta, o alvo responde com SYN/ACK, mas o Nmap não finaliza a conexão (não envia ACK). Em vez disso, um pacote RST é enviado para encerrar a comunicação.</p>
 
 * resposta do host com SYN-ACK = porta aberta
 * resposta do host com RST = porta fechada
@@ -24,15 +23,16 @@ nmap -Pn -sS -sV -sC [IP] -oN [file]
 Ref.: [SYN Scan](https://nmap.org/book/synscan.html)
 
 ## Vulnerability Scan
-<p>Scan de vulnerabilidade usando os scripts da categoria vuln</p>
+<p>Scripts na categoria VULN verificam algumas vulnerabilidades conhecidas.</p>
 
 ```
-nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
+nmap -Pn -T4 -sS -sV -p [PORT] --script vuln [IP] -oN [file]
 ```
 
 * -Pn = disable ping
 * -T4 = timing 4 aggressive
 * -sS = syn scan
+* -sV = version scan
 * -p = port
 * --script vuln
 * -oN = save nmap results
@@ -40,27 +40,37 @@ nmap -Pn -T4 -sS -p [PORT] --script vuln [IP] -oN [file]
 Scan automático Simples + Vulnerabilidade [nmap.sh](https://github.com/carineconstantino/hacking_br/blob/main/NMAP-Ultimate-Guide/nmap.sh)
 
 ## Firewall/Filtro Scan
-<p>Scan para validar regras de firewall/filtros na rede</p>
+<p>Scan para validar regras e filtros de firewall na rede</p>
 
 ### ACK Scan 
-<p>Faz o mapeamento de regras do firewall ao enviar pacotes com a flag ACK habilitada, se uma porta filtrada pelo firewall responder com RST, indica que a conexão foi possível usando o pacote ACK.</p> 
+<p>O ACK scan (ativado com -sA) é usado para mapear regras de firewall, e não identifica se portas TCP estão abertas. Esse scan envia pacotes com a flag ACK. Se o alvo responder com RST, a porta é considerada não filtrada. Se não houver resposta ou vier uma mensagem de erro ICMP, a porta é marcada como filtrada.</p> 
 
 ```
 nmap -sA --reason --traceroute [IP] -oN [file]
 ```
 
-### Window Scan
-<p>Ao responder com RST, caso o campo window não seja nulo, isso indica que o serviço existe e está filtrado pelo firewall. Quando o valor no campo window é zero, então a porta está fechada.</p> 
+### NULL Scan
+<p>Null scan envia pacotes com a flag TCP marcada como zero, e o alvo não sabe como responder. O pacote é descartado pelo alvo, indicando que a porta está aberta. 
+De acordo com a RFC 793:
+
+* Se o pacote for enviado para uma porta fechada, o host deve responder com um RST (Reset)
+* Se o pacote for enviado para uma porta aberta, o host deve ignorar o pacote e não responder
+
+A falta de resposta não permite afirmar com certeza se a porta está "aberta", por isso o Nmap classifica como open|filtered.</p> 
 
 ```
-nmap -sW --reason --traceroute [IP] -oN [file]
+nmap -sN --reason --traceroute [IP] -oN [file]
 ```
 
-### Maimon Scan
-<p>Sistemas baseados em BSD não enviam o pacote RST quando a porta está aberta</p>
+### FIN Scan
+<p>A flag FIN no TCP é usada para encerrar uma conexão já estabelecida. No scan com o parâmetro -sF, o Nmap envia um pacote FIN para uma porta sem uma conexão prévia,  quebrando o comportamento esperado do protocolo TCP.
+Segundo a RFC 793 (TCP):
+
+* Se a porta estiver fechada, o host deve responder com um RST (Reset).
+* Se a porta estiver aberta, não deve haver resposta alguma.</p>
 
 ```
-nmap -sM --reason --traceroute [IP] -oN [file]
+nmap -sF --reason --traceroute [IP] -oN [file]
 ```
 
 Scan automático Firewall/Filtro [firewall-check.sh](https://github.com/carineconstantino/hacking_br/blob/main/NMAP-Ultimate-Guide/firewall-check.sh)
