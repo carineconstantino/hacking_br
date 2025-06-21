@@ -108,7 +108,7 @@ nmap -f -g [PORT] --data-length [VALOR] --ttl [VALOR] -D [IP1, IP2]/RND:5 -S [ip
 Scan automático Evasion [firewall-evasion.sh](https://github.com/carineconstantino/hacking_br/blob/main/NMAP-Ultimate-Guide/firewall-evasion.sh)
 
 <p align="left">
-    <img src="nmap-mind-map.png"><p></p>
+    <img src="nmap-mindmap.png"><p></p>
 </p>
 
 #
