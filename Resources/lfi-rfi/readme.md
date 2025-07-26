@@ -163,13 +163,19 @@ PHP filters allow perform basic modification operations on the data before being
     - convert.base64-decode
     - convert.quoted-printable-encode
     - convert.quoted-printable-decode
-    - convert.iconv.* : Transforms to a different encoding(convert.iconv.<input_enc>.<output_enc>) . To get the list of all the encodings supported run in the console: iconv -l
+    - convert.iconv.* : Transforms to a different encoding (convert.iconv.<input_enc>.<output_enc>) . To get the list of all the encodings supported run in the console: iconv -l
 
 - Compression Filters
     - zlib.deflate: Compress the content (useful if exfiltrating a lot of info)
     - zlib.inflate: Decompress the data
-    - Encryption Filters
+
+- Encryption Filters
     - mcrypt.* : Deprecated
     - mdecrypt.* : Deprecated
 
+- Others Filters
+Running in php var_dump(stream_get_filters()); you can find a couple of unexpected filters:
+    - consumed
+    - dechunk: reverses HTTP chunked encoding
+    - convert.*
 
