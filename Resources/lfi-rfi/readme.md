@@ -1,4 +1,5 @@
 # 🧪 LFI & RFI – Testes de Inclusão de Arquivos
+Ref.: https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html#file-inclusion
 
 ## 📌 Tipos de Vulnerabilidades
 
