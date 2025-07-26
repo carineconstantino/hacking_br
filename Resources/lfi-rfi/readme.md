@@ -1,9 +1,5 @@
 # 🧪 LFI & RFI – Testes de Inclusão de Arquivos
 
-## Descrição
-
-Este guia apresenta técnicas para identificar e explorar vulnerabilidades de **Local File Inclusion (LFI)** e **Remote File Inclusion (RFI)** em aplicações web, especialmente em PHP – com base em práticas consolidadas de pentesting.
-
 ## 📌 Tipos de Vulnerabilidades
 
 ### LFI (Local File Inclusion)
