@@ -4,7 +4,8 @@
 
 ### LFI (Local File Inclusion)
 
-Permite que um atacante inclua arquivos do sistema local, como `/etc/passwd`, por meio de parâmetros de URL mal validados ([Wikipedia][1], [Invicti][2]).
+Permite que um atacante inclua arquivos do sistema local, como `/etc/passwd`, por meio de parâmetros de URL mal validados.
+A vulnerabilidade de Local File Inclusion (LFI) surge da utilização insegura de parâmetros HTTP para controle de conteúdo em aplicações web, prática comum em linguagens como PHP, Node.js e Java. Frameworks frequentemente usam templates para incluir dinamicamente conteúdos com base em parâmetros da URL, como em chamadas do tipo /index.php?page=about. Quando esses parâmetros são passados diretamente para funções como include() sem validação, atacantes podem explorar essa falha para incluir arquivos locais sensíveis, como /etc/passwd ou arquivos de configuração. Essa exposição pode revelar código-fonte e credenciais, facilitando ataques mais graves como SQL Injection ou escalonamento de privilégios. Em ambientes mal configurados, LFI pode evoluir para execução remota de código, comprometendo completamente o servidor e possibilitando movimentação lateral e persistência.
 
 ### RFI (Remote File Inclusion)
 
