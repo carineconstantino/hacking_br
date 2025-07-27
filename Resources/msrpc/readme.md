@@ -19,4 +19,5 @@ nmap --script msrpc-enum -p 135 <target-ip>
     - ncadg_ip_udp — UDP port 135
     - ncacn_http — RPC over HTTP via TCP port 80, 593, and others
     - ncacn_np — the \pipe\epmapper named pipe via SMB
-
+  
+https://juggernaut-sec.com/ad-recon-msrpc/
