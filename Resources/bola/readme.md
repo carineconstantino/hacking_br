@@ -10,4 +10,5 @@ Isso ocorre porque a aplicação não faz a validação correta das permissões 
 - Implementar o monitoramento através de logs para identificar ações anômalas.
 - Realizar avaliação de segurança (pentest) regularmente para identificar previamente essa vulnerabilidade.
 
-  
+### ACL - Access Control List
+Nesse modelo, cada objeto como arquivos, registros na base de dados, e qualquer outro recurso dentro da aplicação possui uma lista de grupos de acesso com as permissões que os usuários neste grupo podem realizar (exemplo: read, write, delete). O gerenciamento de ACL pode se tornar completo dependendo da quantidade de usuários e de funções/objetos, pois cada objeto tem sua própria ACL. 
