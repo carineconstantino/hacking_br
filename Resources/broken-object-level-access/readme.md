@@ -11,7 +11,7 @@ Isso ocorre porque a aplicação não faz a validação correta das permissões 
 - Realizar avaliação de segurança (pentest) regularmente para identificar previamente essa vulnerabilidade.
 
 ### ACL - Access Control List
-Nesse modelo, cada objeto como arquivos, registros na base de dados, e qualquer outro recurso dentro da aplicação possui uma lista de grupos de acesso com as permissões que os usuários neste grupo podem realizar (exemplo: read, write, delete). O gerenciamento de ACL pode se tornar completo dependendo da quantidade de usuários e de funções/objetos, pois cada objeto tem sua própria ACL. 
+Nesse modelo, cada objeto como arquivos, registros na base de dados, e qualquer outro recurso dentro da aplicação possui uma lista de grupos de acesso com as permissões que os usuários neste grupo podem realizar (exemplo: read, write, delete). O gerenciamento de ACL pode se tornar complexo dependendo da quantidade de usuários e de funções/objetos, pois cada objeto tem sua própria ACL. 
 
 ### RBAC - Role Based Access Control 
 No modelo RBAC, a permissão não é atribuída diretamente a um usuário individualmente como na ACL. Neste modelo, existe o conceito de função (role) e o usuário ou grupo de usuários são atribuídos a uma função, que possui as permissões de acesso necessárias para determinadas ações. Na imagem abaixo podemos ver o modelo ilustrado. Um usuário com a função Admin pode criar, deletar e editar, enquanto um usuário com a função Viewer apenas vai visualizar um objeto mas não poderá alterá-lo. 
