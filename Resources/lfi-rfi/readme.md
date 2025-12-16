@@ -209,6 +209,8 @@ readfile('php://filter/zlib.inflate/resource=test.deflated'); #To decompress the
 ### Via Email
 Send a mail to a internal account (user@localhost) containing your PHP payload like <?php echo system($_REQUEST["cmd"]); ?> and try to include to the mail of the user with a path like /var/mail/<USERNAME> or /var/spool/mail/<USERNAME>
 
+### CGI WORDLIST
+
 https://gist.github.com/giper45/35c482a1c558e2646fdccc5cb0faea6b
 
 
