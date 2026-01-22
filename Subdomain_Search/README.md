@@ -1,5 +1,5 @@
 <p align="left">
-    <img width="500" src="subdomainSearch.png"><p></p>
+    <img width="1000" src="subdomainSearch.png"><p></p>
     <a href="https://hackingbr.gitbook.io/hacking-br/">@hackingbr</a>
 </p>
 
@@ -15,7 +15,7 @@ python3 subdomain-search.py -domain [domain]
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img src="zoltar-subdomain-result.png"><p></p>
+    <img src="subdomainSearchResultado.png"><p></p>
 </p>
 
 #
