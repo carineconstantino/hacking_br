@@ -17,7 +17,7 @@ python3 html-scan.py [URL]
     <img src="htmlscan.png"><p></p>
 </p>
 <p align="left">
-    <img src="zoltar-resultado-html-scan-report.png"><p></p>
+    <img src="htmlscan_html.png"><p></p>
 </p>
 
 #
