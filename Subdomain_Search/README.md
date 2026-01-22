@@ -1,21 +1,16 @@
 <p align="left">
-    <img width="500" src="zoltar-subdomain.png"><p></p>
-    <a href="https://github.com/carineconstantino/hackingbr">@hackingbr></a>
+    <img width="500" src="subdomainSearch.png"><p></p>
+    <a href="https://hackingbr.gitbook.io/hacking-br/">@hackingbr</a>
 </p>
 
-## 👾 Zoltar [Subdomain Search]
+## 👾 Subdomain Search
 ### 🇧🇷
-Zoltar é uma ferramenta em Python3 que faz uma enumeração de subdomínios usando a resolução DNS.
-Diferente de outras ferramentas, Zoltar usa ferramenta "build-in" para descobrir subdomínios, sem a necessidade de usar API de terceiros. 
-
-### 🇺🇸
-Zoltar tool make a subdomain enumeration by DNS resolve.
-Different from other tools, Zoltar uses "build-in" tool to discover subdomains, and dont need third party API. 
-
+Ferramenta em Python3 para descoberta de subdomínios usando resolução DNS.
+Diferente de outras ferramentas, Subdomain Search o módulo "build-in" do python para descobrir subdomínios, sem a necessidade de usar API de terceiros. 
 
 ## ⏩ Exemplo
 ```
-python3 zoltar-subdomain-search.py -domain [domain]
+python3 subdomain-search.py -domain [domain]
 ```
 ### 🎯 Resultado na CLI
 
