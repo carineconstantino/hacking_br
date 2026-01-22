@@ -1,6 +1,6 @@
 <p align="left">
     <img width="500" src="htmlscanlogo.png"><p></p>
-    <a href="[https://github.com/carineconstantino/hackingbr](https://hackingbr.gitbook.io/hacking-br/)">@hackingbr></a>
+    <a href="https://github.com/carineconstantino/hackingbr">@hackingbr</a>
 </p>
 
 ## 👾 HTML Scan
