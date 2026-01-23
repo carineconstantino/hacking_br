@@ -1,5 +1,5 @@
 <p align="left">
-    <img width="500" src="htmlscanlogo.png"><p></p>
+    <img width="500" src="js_search.png"><p></p>
     <a href="https://hackingbr.gitbook.io/hacking-br/">@hackingbr</a>
 </p>
 
