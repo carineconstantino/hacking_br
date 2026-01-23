@@ -12,13 +12,13 @@ O objetivo é validar quais "paths" são acessíveis, e assim descobrir endpoint
 ```
 python3 html-dir-scan.py -url https://exemplo.com
 ```
-### Resultado na CLI
+### 🎯 Resultado na CLI
 Diretórios validados
 <p align="left">
     <img width="500" src="html-dir-scan-resultado.png"><p></p>
 </p>
 
-### Wordlist personalizada
+### :scroll: Wordlist personalizada
 URLs validadas salvas em um arquivo .txt para uso em ferramentas de Fuzzing.
 <p align="left">
     <img width="500" src="html-dir-scan-wordlist.png"><p></p>
