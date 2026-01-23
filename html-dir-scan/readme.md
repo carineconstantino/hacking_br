@@ -20,7 +20,7 @@ Diretórios validados
 ### Wordlist personalizada
 URLs validadas salvas em um arquivo .txt para uso em ferramentas de Fuzzing.
 <p align="left">
-    <img width="500" src="report.png"><p></p>
+    <img width="500" src="html-dir-scan-wordlist.png"><p></p>
 </p>
 
 #
