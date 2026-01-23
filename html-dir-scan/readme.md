@@ -15,7 +15,7 @@ python3 html-dir-scan.py -url https://exemplo.com
 ### 🎯 Resultado na CLI
 Diretórios validados
 <p align="left">
-    <img width="500" src="html-dir-scan-resultado.png"><p></p>
+    <img width="800" src="html-dir-scan-resultado.png"><p></p>
 </p>
 
 ### :scroll: Wordlist personalizada
