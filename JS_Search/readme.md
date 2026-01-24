@@ -19,7 +19,7 @@ Items procurados:
 
 ## ⏩ Exemplo
 ```
-python3 js_search.py [URL]
+python3 js_search.py [arquivo]
 ```
 ### 🎯 Resultado na CLI
 
