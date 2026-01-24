@@ -24,7 +24,7 @@ python3 js_search.py [URL]
 ### 🎯 Resultado na CLI
 
 <p align="left">
-    <img src="htmlscan.png"><p></p>
+    <img src="js_search.png"><p></p>
 </p>
 <p align="left">
     <img src="htmlscan_html.png"><p></p>
