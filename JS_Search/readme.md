@@ -27,7 +27,7 @@ python3 js_search.py [arquivo]
     <img src="js_search_exemplo.png"><p></p>
 </p>
 <p align="left">
-    <img src="htmlscan_html.png"><p></p>
+    <img src="js_search_resultado.png"><p></p>
 </p>
 
 #
