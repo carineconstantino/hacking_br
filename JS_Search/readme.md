@@ -5,7 +5,7 @@
 
 ## 👾 JS Search
 ### 🇧🇷
-Ferramenta em Python3 que analisa busca em arquivos Javascripts por informação relevante.
+Ferramenta em Python3 que busca informações relevantes em arquivos Javascripts.
 
 Items procurados: 
 
@@ -26,6 +26,8 @@ python3 js_search.py [arquivo]
 <p align="left">
     <img src="js_search_exemplo.png"><p></p>
 </p>
+
+### 🎯 Resultado em HTML
 <p align="left">
     <img src="js_search_resultado.png"><p></p>
 </p>
