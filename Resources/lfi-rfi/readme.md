@@ -213,4 +213,7 @@ Send a mail to a internal account (user@localhost) containing your PHP payload l
 
 https://gist.github.com/giper45/35c482a1c558e2646fdccc5cb0faea6b
 
+### Files to Search in LFI
+https://d00mfist.gitbooks.io/ctf/content/local_file_inclusion.html
+
 
