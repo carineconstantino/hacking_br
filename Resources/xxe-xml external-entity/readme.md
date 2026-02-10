@@ -428,6 +428,8 @@ xxe.xml
     <bar>&xxe;</bar>
 </foo>
 ```
+### XXE inserido no .docx
+Explicação: https://thehackingbr.substack.com/p/como-inserir-um-payload-xxe-em-um?r=6vkstw
 
 <p>:orange_book: Payloads: 
 <p>https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection</p>
