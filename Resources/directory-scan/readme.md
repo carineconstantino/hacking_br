@@ -23,6 +23,26 @@ ffuf -w [wordlist]:TESTE -X POST -d "username=admin\&password=TESTE" -u https://
 ffuf -w entries.txt -u https://example.org/ -X POST -H "Content-Type: application/json" \
       -d '{"name": "FUZZ", "anotherkey": "anothervalue"}' -fr "error"
 ```
+### Scan Subdomínios
+```
+ffuf -u [url] -H "Host: TESTE.dominio.com" -w [wordlist]:TESTE
+```
+
+## GoBuster
+
+### Scan Subdominios
+```
+gobuster dns -d example.com -w /path/to/wordlist
+```
+
+### Scan VHOSTS
+```
+gobuster vhost -u https://example.com -w /path/to/wordlist
+
+### Excluí respostas com um determinado tamanho
+gobuster vhost -u https://example.com -w /path/to/wordlist --exclude-length 1542
+```
+
 
 
 
