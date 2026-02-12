@@ -27,6 +27,53 @@ ffuf -w entries.txt -u https://example.org/ -X POST -H "Content-Type: applicatio
 ```
 ffuf -u [url] -H "Host: TESTE.dominio.com" -w [wordlist]:TESTE
 ```
+### Scan Extensions
+```
+ffuf -u http://172.20.3.144/indexFUZZ -w /root/Desktop/misc/SecLists/Discovery/Web-Content/web-extensions.txt
+```
+
+### Extensions
+```
+.asp
+.aspx
+.bat
+.c
+.cfm
+.cgi
+.css
+.com
+.dll
+.exe
+.htm
+.html
+.inc
+.jhtml
+.js
+.jsa
+.jsp
+.log
+.mdb
+.nsf
+.pcap
+.php
+.php2
+.php3
+.php4
+.php5
+.php6
+.php7
+.phps
+.pht
+.phtml
+.pl
+.reg
+.sh
+.shtml
+.sql
+.swf
+.txt
+.xml
+```
 
 ## GoBuster
 
