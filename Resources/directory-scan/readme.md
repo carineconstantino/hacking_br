@@ -42,7 +42,10 @@ gobuster vhost -u https://example.com -w /path/to/wordlist
 ### Excluí respostas com um determinado tamanho
 gobuster vhost -u https://example.com -w /path/to/wordlist --exclude-length 1542
 ```
-
+### Scan extensions
+```
+gobuster dir -u 172.20.8.56 -w /root/Desktop/misc/SecLists/Discovery/Web-Content/common.txt --extensions php -v
+```
 
 
 
