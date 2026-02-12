@@ -47,6 +47,9 @@ gobuster vhost -u https://example.com -w /path/to/wordlist --exclude-length 1542
 gobuster dir -u 172.20.8.56 -w /root/Desktop/misc/SecLists/Discovery/Web-Content/common.txt --extensions php -v
 ```
 
-
+## Feroxbuster
+```
+feroxbuster -u 172.20.8.56 -w /root/Desktop/misc/SecLists/Discovery/Web-Content/common.txt -x pdf
+```
 
 
