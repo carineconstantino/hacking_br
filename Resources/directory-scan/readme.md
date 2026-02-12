@@ -74,6 +74,10 @@ ffuf -u http://172.20.3.144/indexFUZZ -w /root/Desktop/misc/SecLists/Discovery/W
 .txt
 .xml
 ```
+### Scan Page
+```
+ffuf -u http://172.20.3.144/FUZZ.html -w /root/Desktop/misc/SecLists/Discovery/Web-Content/common.txt -v
+```
 
 ## GoBuster
 
