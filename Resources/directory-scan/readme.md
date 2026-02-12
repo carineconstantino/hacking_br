@@ -52,4 +52,8 @@ gobuster dir -u 172.20.8.56 -w /root/Desktop/misc/SecLists/Discovery/Web-Content
 feroxbuster -u 172.20.8.56 -w /root/Desktop/misc/SecLists/Discovery/Web-Content/common.txt -x pdf
 ```
 
+## DIRB
+```
+dirb http://172.20.8.56/ -X .html
+```
 
