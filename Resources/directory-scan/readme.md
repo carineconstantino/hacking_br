@@ -87,6 +87,10 @@ ffuf -u http://172.20.3.144/indexFUZZ -w /root/Desktop/misc/SecLists/Discovery/W
 ```
 ffuf -u http://172.20.3.144/FUZZ.html -w /root/Desktop/misc/SecLists/Discovery/Web-Content/common.txt -v
 ```
+### Brute-Force
+```
+ffuf -X POST -u 'http://personmanager.hv/login.php' -H 'Content-Type: application/x-www-form-urlencoded' -w /usr/share/wordlists/rockyou.txt:TESTE -d 'username=admin&password=TESTE'
+```
 
 ## GoBuster
 Gobuster is a tool used for brute-force attacks to:
