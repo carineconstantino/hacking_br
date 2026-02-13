@@ -1,5 +1,10 @@
 ## FFUF 
 
+Directory discovery
+Vhost discovery
+Fuzzing GET parameters
+Fuzzing POST data
+
 ### Scan Padrão
 ```
 ffuf -u [url]:TESTE -w [wordlist]:TESTE
@@ -26,6 +31,8 @@ ffuf -w entries.txt -u https://example.org/ -X POST -H "Content-Type: applicatio
 ### Scan Subdomínios
 ```
 ffuf -u [url] -H "Host: TESTE.dominio.com" -w [wordlist]:TESTE
+
+ffuf -w /path/to/wordlist -u https://FUZZ.example.com/
 ```
 ### Scan Extensions
 ```
@@ -80,6 +87,14 @@ ffuf -u http://172.20.3.144/FUZZ.html -w /root/Desktop/misc/SecLists/Discovery/W
 ```
 
 ## GoBuster
+Gobuster is a tool used for brute-force attacks to:
+
+Discover URLs (directories and files) on websites
+DNS subdomains (with wildcard support)
+Virtual hostnames (vhosts) on target web servers
+Open Amazon S3 buckets
+Open Google Cloud buckets
+TFTP servers
 
 ### Scan Subdominios
 ```
