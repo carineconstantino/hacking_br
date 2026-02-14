@@ -50,18 +50,19 @@ medusa -d
 ```
 apt install postgresql-client-common # instalação no Ubuntu
 ```
+
 ### Types of Brute-Force with Burp Suite
 
-- Sniper
+#### Sniper
 - Used to test many different payloads for a single parameter.
 
-- Battering Ram
+#### Battering Ram
 - Used when the same payload needs to be tested on multiple parameters.
 
-- Pitchfork
+#### Pitchfork
 - Used when different payloads need to be tried on all parameters in a cross manner. For example, element from the first payload list is tried for the first parameter, element from the second payload list for the second parameter, and then crossing over the lists.
 - Usado quando diferentes payloads precisam ser testados em todos os parâmetros, de modo que o payload da primeira wordlist é testado no primeiro parâmetro, o elemento da segunda wordlist é testado no segundo parâmetro, e depois os valores se invertem. 
 
-- Cluster Bomb
+#### Cluster Bomb
 - Used when separate payloads for all parameters are to be tried without crossover. Element from the first payload list is tried for the first parameter, while the second payload list is used for the second parameter.
-- 
+- Usado quando payloads diferentes são testados em vários parâmetros, de modo que o primeiro payload da wordlist é testado no primeiro parâmetro, enquanto o segundo payload da wordlist é testado no segundo parâmetro, e não ocorre a invesão dos valores durante o teste. Essa é a diferença entre o tipo Pitchfork e Cluster Bomb. 
