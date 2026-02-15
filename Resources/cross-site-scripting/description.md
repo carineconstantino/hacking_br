@@ -34,15 +34,16 @@ As vulnerabilidades XSS comprometem a segurança geral de um site ou aplicativo.
 
 ### Os ataques XSS são categorizados em três tipos principais:
 
-XSS Refletido (XSS Não Persistente): Ocorre quando os dados enviados por um usuário são refletidos imediatamente por uma aplicação web sem a devida filtragem e, em seguida, executados pelo navegador do usuário. Scripts maliciosos geralmente são enviados por meio de parâmetros de URL e executados quando o usuário abre a URL.
+<b>XSS Refletido (XSS Não Persistente):</b> Ocorre quando os dados enviados por um usuário são refletidos imediatamente por uma aplicação web sem a devida filtragem e, em seguida, executados pelo navegador do usuário. Scripts maliciosos geralmente são enviados por meio de parâmetros de URL e executados quando o usuário abre a URL.
 
-XSS Armazenado (XSS Persistente): Ocorre quando scripts maliciosos são armazenados no banco de dados da aplicação web e executados quando outros usuários visualizam o conteúdo afetado.
+<b>XSS Armazenado (XSS Persistente):</b> Ocorre quando scripts maliciosos são armazenados no banco de dados da aplicação web e executados quando outros usuários visualizam o conteúdo afetado.
 
-XSS baseado em DOM (XSS baseado em DOM): Scripts maliciosos são executados diretamente manipulando o Modelo de Objeto de Documento (DOM) no navegador do usuário. Nesse caso, o atacante aciona a execução de scripts do lado do cliente de uma aplicação web alterando o DOM.
+<b>XSS baseado em DOM (XSS baseado em DOM):</b>: Scripts maliciosos são executados diretamente manipulando o Modelo de Objeto de Documento (DOM) no navegador do usuário. Nesse caso, o atacante aciona a execução de scripts do lado do cliente de uma aplicação web alterando o DOM.
 
-DOM (Document Object Model): Uma interface de programação que representa um documento HTML como uma estrutura hierárquica em árvore, permitindo a interação com o documento usando linguagens como JavaScript.
+<b>DOM (Document Object Model):</b> Uma interface de programação que representa um documento HTML como uma estrutura hierárquica em árvore, permitindo a interação com o documento usando linguagens como JavaScript.
 
-Content Security Policy (CSP): A security protocol that restricts the sources from which a web page can load scripts, helping to prevent XSS attacks.
+### Content Security Policy (CSP)
+A security protocol that restricts the sources from which a web page can load scripts, helping to prevent XSS attacks.
 ```
 Content-Security-Policy: script-src 'self' https://apis.example.com
 ```
