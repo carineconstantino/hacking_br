@@ -72,3 +72,5 @@ sessionStorage	## Provides access to the browser's session storage.
 <textarea>	## Used to get multi-line user input.
 <svg>	## Used to create vector graphics.
 ```
+### Análise do código-fonte
+A causa fundamental da vulnerabilidade é a renderização direta da entrada do usuário no navegador sem verificações ou filtragens suficientes. Essa situação leva a vulnerabilidades de segurança, particularmente ataques XSS.
