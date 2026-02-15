@@ -72,5 +72,40 @@ sessionStorage	## Provides access to the browser's session storage.
 <textarea>	## Used to get multi-line user input.
 <svg>	## Used to create vector graphics.
 ```
-### Análise do código-fonte
+### Análise do código-fonte (conceito básico)
 A causa fundamental da vulnerabilidade é a renderização direta da entrada do usuário no navegador sem verificações ou filtragens suficientes. Essa situação leva a vulnerabilidades de segurança, particularmente ataques XSS.
+
+### Exemplo de código vulnerável
+O seguinte trecho de código PHP exibe a entrada do usuário diretamente em um contexto HTML sem a devida validação, criando uma oportunidade para ataques XSS.
+
+```
+<?php 
+    if (isset($_GET['q'])) {
+        $q = $_GET['q'];
+        echo '<div class="alert alert-danger" role="alert">
+            No Result Found for <b>' . $q . '</b> 
+        </div>';
+    } 
+?>
+```
+
+Este código verifica a presença do parâmetro GET "q" na URL. Se o parâmetro estiver presente, seu valor é atribuído à variável `$q`. Essa variável é então diretamente exibida em um contexto HTML dentro das tags `<div>` e `<b>`.
+
+O parâmetro "q", obtido via método GET, é usado diretamente dentro das tags `<b>` sem quaisquer medidas de segurança. Se o parâmetro "q" contiver um código como `<script>alert(1)</script>`, esse script será executado no navegador do usuário e um alerta com o número 1 será exibido.
+
+### Exemplo de código seguro
+
+Neste exemplo, a função `htmlspecialchars` é usada para exibir a entrada do usuário de forma segura. Essa função converte caracteres específicos do HTML (<, >, &, ", ' etc.) em suas entidades HTML (&lt;, &gt;, &amp;, &quot;, &#039; etc.).
+
+```
+<?php 
+    if (isset($_GET['q'])) {
+        $q = $_GET['q'];
+        echo '<div class="alert alert-danger" role="alert">
+            No Result Found for <b>' . htmlspecialchars($q) . '</b> 
+        </div>';
+    } 
+?>
+```
+
+Com essa modificação, scripts potencialmente maliciosos no parâmetro "q" são convertidos em texto inofensivo, prevenindo ataques XSS. Por exemplo, mesmo que um usuário envie uma tag <script>, ela será interpretada como texto simples em vez de um elemento HTML pelo navegador.
