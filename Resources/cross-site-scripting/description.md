@@ -47,3 +47,28 @@ A security protocol that restricts the sources from which a web page can load sc
 ```
 Content-Security-Policy: script-src 'self' https://apis.example.com
 ```
+### Commonly Used JavaScript Functions and Objects in XSS Attacks
+```
+alert()	## Displays a message box to the user.
+prompt()	## Prompts the user for input and returns the entered value.
+confirm()	## Displays a confirmation box to the user. The user can choose "OK" or "Cancel".
+eval()	## Evaluates a string as JavaScript code and executes it. Unsafe for user inputs and may lead to vulnerabilities.
+fetch()	## Sends an HTTP request to the specified URL and returns a Promise. The request result can be handled in the Promise chain.
+document.cookie	## Provides access to the browser's cookies.
+innerHTML	## Used to change the content of an HTML element.
+setTimeout()	## Executes a specified function after a certain time interval.
+setInterval()	## Repeatedly executes a specified function at certain time intervals.
+XMLHttpRequest	## Used to exchange data with a server in the background.
+localStorage	## Used to store persistent data in the browser.
+sessionStorage	## Provides access to the browser's session storage.
+```
+### Commonly Used HTML Tags in XSS Attacks
+```
+<script>	## Used to include JavaScript code in the page.
+<img>	## Used to embed an image.
+<iframe>	## Used to embed another web page into the current page.
+<a>	## Used to create a hyperlink.
+<input>	## Used to get user input.
+<textarea>	## Used to get multi-line user input.
+<svg>	## Used to create vector graphics.
+```
