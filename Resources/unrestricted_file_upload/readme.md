@@ -1,3 +1,6 @@
+# Upload Inseguro
+Conteúdo: https://hackingbr.gitbook.io/hacking-br/
+
 ## Extensões para bypass
 ```
 PHP: .php, .php2, .php3, .php4, .php5, .php6, .php7, .phps, .pht, .phtm, .phtml, .phar
