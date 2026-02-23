@@ -9,5 +9,6 @@ http://127.0.0.1
 ffuf -u 'http://exemplo.com/fetch?url=HOST:PORT' -H 'Cookie: session=valor; id=valor' -w hosts.txt:HOST -w ports.txt:PORT'
 ```
 ### Scripts 
+### Criar lista de IPs: [ip_range_wordlist.sh](
 
 
