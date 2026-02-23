@@ -10,5 +10,5 @@ ffuf -u 'http://exemplo.com/fetch?url=HOST:PORT' -H 'Cookie: session=valor; id=v
 ```
 ### Scripts 
 #### Criar lista de IPs: [ip_range_wordlist.sh](https://github.com/carineconstantino/hacking_br/blob/main/Resources/ssrf/ip_range_wordlist.sh)
-#### Criar lists de IPs decimal: [ip_decimal_wordlist.sh](
+#### Criar lists de IPs decimal: [ip_decimal_wordlist.sh](https://github.com/carineconstantino/hacking_br/blob/main/Resources/ssrf/ip_decimal_wordlist.sh)
 
