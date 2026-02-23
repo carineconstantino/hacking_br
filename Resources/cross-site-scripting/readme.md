@@ -1,4 +1,5 @@
 # Cross-Site Scripting
+Conteúdo: https://hackingbr.gitbook.io/hacking-br/web/cross-site-scripting
 
 :hamburger: O Cross-Site Script é uma falha de segurança onde a aplicação web processa códigos Javascript ou TAGS HTML inseridos pelo usuário. Os tipos de Cross-Site Scripting são: 
 - Refletido: o código é executado no navegador do usuário
